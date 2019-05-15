@@ -1,16 +1,24 @@
-﻿<?php 
-if(isset($_POST['submit'])){
-    $to = "diogo.kramel@gmail.com"; // this is your Email address
-    $from = $_POST['email']; // this is the sender's Email address
-    $first_name = $_POST['first_name'];
-    $last_name = $_POST['last_name'];
-    $subject = "Form submission";
-    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
+﻿<?php
 
-    $headers = "From:" . $from;
-    $send = mail($to,$subject,$message,$headers);
-    }
+require 'vendor/autoload.php';
+
+$from = $_POST['email'];
+$subject = "Hello World from the SendGrid PHP Library!";
+$to = $_POST['email'];
+$content = new SendGrid\Content("text/plain", "Hello, Email!");
+$mail = new SendGrid\Mail($from, $subject, $to, $content);
+
+$apiKey = getenv('SENDGRID_API_KEY');
+$sg = new \SendGrid($apiKey);
+
+$response = $sg->client->mail()->send()->post($mail);
+echo $response->statusCode();
+echo $response->headers();
+echo $response->body();
 ?>
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
