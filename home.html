@@ -1,38 +1,4 @@
-﻿<?php
-
-require 'vendor/autoload.php';
-
-/ contains a variable called: $API_KEY that is the API Key.
-	// You need this API_KEY created on the Sendgrid website.
-	
-	$FROM_EMAIL = 'diogo.kramel@gmail.com';
-	// they dont like when it comes from @gmail, prefers business emails
-	$TO_EMAIL = 'diogo.kramel@gmail.com';
-	// Try to be nice. Take a look at the anti spam laws. In most cases, you must
-	// have an unsubscribe. You also cannot be misleading.
-	$subject = "YOUR_SUBJECT";
-	$from = new SendGrid\Email(null, $FROM_EMAIL);
-	$to = new SendGrid\Email(null, $TO_EMAIL);
-	$htmlContent = '';
-	// Create Sendgrid content
-	$content = new SendGrid\Content("text/html",$htmlContent);
-	// Create a mail object
-	$mail = new SendGrid\Mail($from, $subject, $to, $content);
-	
-	$sg = new \SendGrid($API_KEY);
-	$response = $sg->client->mail()->send()->post($mail);
-			
-	if ($response->statusCode() == 202) {
-		// Successfully sent
-		echo 'done';
-	} else {
-		echo 'false';
-	}
-
-?>
-
-
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -383,7 +349,7 @@ require 'vendor/autoload.php';
 						</div>
 						</fieldset>
 						<div class="form-group">
-							<input type="submit" name="submit" value="Send message" id="submit" class="btn btn-sm btn-dark">
+							<input type="submit" name="submit_contact" value="Send message" id="submit_contact" class="btn btn-sm btn-dark">
 						</div>
 						<div id="alert"></div>
 						</form>
@@ -412,3 +378,29 @@ require 'vendor/autoload.php';
 </body>
 
 </html>
+
+<?php
+require 'vendor/autoload.php';
+$API_KEY = "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";
+
+if(isset($_POST['submit_contact']))
+{
+	$name = $_POST['name'];
+	$email_id = $_POST['email'];
+	$subject = $_POST['subject'];
+	$message = $_POST['message'];
+
+	$email = new \SendGrid\Mail\Mail(); 
+	$email->setFrom("diogo.kramel@gmail.com", "Diogo Kramel");
+	$email->setSubject($subject);
+	$email->addTo($email_id, $name);
+	$email->addContent("text/plain", $message);
+	$sendgrid = new \SendGrid($API_KEY);
+	
+	if($sendgrid->send($email));
+	{
+		echo "Message sent successfully"
+	}
+}
+
+?>
