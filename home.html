@@ -319,7 +319,7 @@
 			<div class="form-wrapper">
 				<div class="row">
 					<div class="col-md-12">
-						<form action="assets/php/contact.php" method="POST" name="contactform" id="contactform" class=" animated out" data-delay="0">
+						<form action="assets/php/contact.php" method="post" name="contactform" id="contactform" class=" animated out" data-delay="0">
 						<fieldset>
 							<div class="row">
 								<div class="col-md-6">
@@ -343,15 +343,14 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<input class="form-control" type="text" name="message" id="message" placeholder="Message...">
+									<textarea class="form-control" name="message" id="message" placeholder="Message..."></textarea>
 								</div>
 							</div>
 						</div>
 						</fieldset>
 						<div class="form-group">
-							<input type="submit" name="submit" value="Send message" id="submit" class="btn btn-sm btn-dark">
+							<button type="submit" name="submit" id="submit" class="btn btn-sm btn-dark">Submit</button>
 						</div>
-						<div id="alert"></div>
 						</form>
 					</div>
 				</div> 
