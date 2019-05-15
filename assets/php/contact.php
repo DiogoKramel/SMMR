@@ -3,7 +3,7 @@
 require 'vendor/autoload.php';
 $API_KEY = "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";
 
-if(isset($_POST['submit_contact']))
+if(isset($_POST['submit']))
 {
 	$name = $_POST['name'];
 	$email_id = $_POST['email'];
