@@ -365,7 +365,7 @@ $(document).ready(function($) {
             $('#alert').hide();
 
         $('#submit')
-            .after('<img src="assets/images/ajax-loader.GIF" class="contactloader" />')
+            .after('<img src="assets/images/loading.gif" class="contactloader" />')
             .attr('disabled','disabled');
 
         $.post(action, {
