@@ -18,6 +18,20 @@ echo $response->body();
 ?>
 
 
+<?php 
+if(isset($_POST['submit'])){
+    $to = "diogo.kramel@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $subject = "Form submission";
+    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
+
+    $headers = "From:" . $from;
+    $send = mail($to,$subject,$message,$headers);
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -363,7 +377,7 @@ echo $response->body();
 							</div>
 							<div class="col-md-6">
 								<div class="form-group">
-									<textarea class="form-control" name="message" id="message" placeholder="Message..."></textarea>
+									<input class="form-control" type="text" name="message" id="message" placeholder="Message...">
 								</div>
 							</div>
 						</div>
