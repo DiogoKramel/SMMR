@@ -319,7 +319,7 @@
 			<div class="form-wrapper">
 				<div class="row">
 					<div class="col-md-12">
-						<form action="" method="post" name="contactform" id="contactform" class=" animated out" data-animation="fadeInUp" data-delay="0">
+						<form action="" method="post" name="contactform" id="contactform" class=" animated out" data-delay="0">
 						<fieldset>
 							<div class="row">
 								<div class="col-md-6">
@@ -398,7 +398,7 @@ if(isset($_POST['submit']))
 	$email->addContent("text/plain", $message);
 	$sendgrid = new \SendGrid($API_KEY);
 	
-	if($sendgrid->send($email));
+	if($sendgrid->send($email))
 	{
 		echo "Message sent successfully";
 	}
