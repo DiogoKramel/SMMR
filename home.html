@@ -1,4 +1,24 @@
-﻿<!DOCTYPE html>
+﻿<?php 
+if(isset($_POST['submit'])){
+    $to = "diogo.kramel@gmail.com"; // this is your Email address
+    $from = $_POST['email']; // this is the sender's Email address
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $subject = "Form submission";
+    $subject2 = "Copy of your form submission";
+    $message = $first_name . " " . $last_name . " wrote the following:" . "\n\n" . $_POST['message'];
+    $message2 = "Here is a copy of your message " . $first_name . "\n\n" . $_POST['message'];
+
+    $headers = "From:" . $from;
+    $headers2 = "From:" . $to;
+    mail($to,$subject,$message,$headers);
+    mail($from,$subject2,$message2,$headers2); // sends a copy of the message to the sender
+    echo "Mail Sent. Thank you " . $first_name . ", we will contact you shortly.";
+    // You can also use header('Location: thank_you.php'); to redirect to another page.
+    }
+?>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -82,59 +102,57 @@
 		</nav>
 	</header>
   
-	<div id="wrapper">
-
 	<!-- Hero -->
 	<section>
 		<div id="hero-section" class="creative-hero-page" data-stellar-background-ratio="0">
 			<div class="hero-content">
-			<div class="container">
-				<div class="row">
-				<div class="col-md-8 col-lg-7">
-					<div class="hero-text">
-					<h1>SMMR</h1>
-					<p class="hero">SIMULATION OF MARINE MAMMALS RESILIENCE </p>
-					<p> Welcome to an online application designed to evaluate the impacts of anthropogenic activities on marine mammals species</p>
-					</div> 
-					<div class="call-to-action">
-					<a href="#process-section" class="section-scroll btn btn-md btn-primary">HOW IT WORKS</a>
-					<span class="spacebtn"></span>
-					<a href="input.html" class="section-scroll btn btn-md btn-primary">SIMULATE</a>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-8 col-lg-7">
+							<div class="hero-text">
+								<h1>SMMR</h1>
+								<p class="hero">SIMULATION OF MARINE MAMMALS RESILIENCE </p>
+								<p> Welcome to an online application designed to evaluate the impacts of anthropogenic activities on marine mammals species</p>
+							</div> 
+								<div class="call-to-action">
+								<a href="#process-section" class="section-scroll btn btn-md btn-primary">HOW IT WORKS</a>
+								<span class="spacebtn"></span>
+								<a href="input.html" class="section-scroll btn btn-md btn-primary">SIMULATE</a>
+							</div>
+						</div> 
 					</div>
-				</div> 
 				</div>
 			</div>
+		</div>
+	</section>
+    
+	<!-- About  -->
+	<section>
+		<div id="about-section">
+			<div class="row without-margin">
+				<div class="col-md-6 without-padding ">
+					<div class="img-about">
+						<img src="assets/images/background.jpg" alt="">
+					</div>
+				</div>
+				<div class="col-md-6 without-padding">
+					<div class="about-me">
+						<h4>OUR GOAL</h4>
+						<h3>TO UNDERSTAND BETTER HOW HUMAN ACTIVITIES AFFECTS MARINE MAMMALS</h3>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div> 
+				</div> 
 			</div>
 		</div>
-		</section>
-    
-    <!-- About  -->
-    <section>
-      <div id="about-section">
-        <div class="row without-margin">
-          <div class="col-md-6 without-padding ">
-            <div class="img-about">
-              <img src="assets/images/background.jpg" alt="">
-            </div>
-          </div>
-          <div class="col-md-6 without-padding">
-            <div class="about-me">
-              <h4>OUR GOAL</h4>
-              <h3>TO UNDERSTAND BETTER HOW HUMAN ACTIVITIES AFFECTS MARINE MAMMALS</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-            </div> 
-          </div> 
-        </div>
-      </div>
-    </section>
+	</section>
 
-    <section>
-      <div class="sep-section"></div>
-    </section>
+	<section>
+		<div class="sep-section"></div>
+	</section>
 
 	<!-- Process-section -->
-    <section>
-      	<div id="process-section" class="pad-sec-60">
+  <section>
+    <div id="process-section" class="pad-sec-60">
 			<div class="container">
 				<div class="title-section pad-bt-80">
 					<div class="row">
@@ -221,17 +239,17 @@
 									</div>
 								</div> 
 							</div>
-                   	 	</div> 
-                	</div> 
-            	</div>
-        	</div> 
-      	</div>
-    </section>
+            </div> 
+          </div> 
+        </div>
+      </div> 
+    </div>
+  </section>
 
-    <!-- Promo -->
-    <div class="promo-section grey-bg pad-sec-40">
-        <div class="container">
-          	<div class="row">
+  <!-- Promo -->
+  <div class="promo-section grey-bg pad-sec-40">
+    <div class="container">
+      <div class="row">
 				<div class="col-md-8">
 					<div class="promo-text">
 						<h4 class="promo-title">Do you want to know more?</h4>
@@ -241,14 +259,14 @@
 				<div class="col-md-4">
 					<div class="promo-action">
 						<a href="#contact-section" class="section-scroll btn btn-lg btn-primary">Download manual</a>
-              		</div>
-            	</div>
-          	</div>
+          </div>
         </div>
+      </div>
+    </div>
 	</div>
 	<br><br>
       
-    <!-- Team section -->
+  <!-- Team section -->
 	<div id="team-section" class="">
 		<div class="container">
 			<div class="title-section pad-bt-20">
@@ -293,7 +311,7 @@
 											<p>She currently teaches Animal Diversity and Biology, Biological Oceanography, Coastal Biology and Toxicology, and coordinates the Master Program in Biodiversity and Island Ecology (MBEI). </p>
 											<ul class="social-icons" style="text-align: center">
 												<li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="E-mail" href="mailto:ana.cm.costa@uac.pt" data-original-title="" title=""><i class="fa fa-envelope"></i></a></li>
-												<li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Skype" href="skype:amancioandre" data-original-title="" title=""><i class="fa fa-skype"></i></a></li>
+												<li><a data-rel="tooltip" data-toggle="tooltip" data-trigger="hover" data-placement="bottom" data-title="Skype" href="skype:nuchese" data-original-title="" title=""><i class="fa fa-skype"></i></a></li>
 											</ul>
 										</div> 
 									</div>
@@ -307,9 +325,8 @@
 			</div> 
 		</div>
 	</div>
-
     
-    <!-- Contact-section -->
+  <!-- Contact-section -->
 	<div id="contact-section" class="pad-sec-40">
 		<div class="container">
 			<div class="title-section text-center">
@@ -362,21 +379,29 @@
 		</div> 
 	</div>
 
-  	<!-- Back-to-top -->
-  	<div class="back-to-top">
-		<i class="fa fa-angle-up fa-3x"></i>
-  	</div>
+	<form action="" method="post">
+		First Name: <input type="text" name="first_name"><br>
+		Last Name: <input type="text" name="last_name"><br>
+		Email: <input type="text" name="email"><br>
+		Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
+		<input type="submit" name="submit" value="Submit">
+		</form>
 
-  	<!-- Footer -->
-  	<footer>
-      	<div class="container">
+	<!-- Back-to-top -->
+	<div class="back-to-top">
+		<i class="fa fa-angle-up fa-3x"></i>
+	</div>
+
+	<!-- Footer -->
+	<footer>
+		<div class="container">
 			<div class="row">
 				<div class="col-md-6">
 					<p>Diogo Kramel @2018. All Rights Reserved.</p>
 				</div>
 			</div>
-      	</div>
-  	</footer>
+		</div>
+	</footer>
 
 </body>
 

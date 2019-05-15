@@ -936,7 +936,6 @@ dl.accordion {
   top: 50%;
   right: 10px;
   font-family: 'FontAwesome';
-  speak: none;
   font-style: normal;
   font-weight: normal;
   font-variant: normal;
@@ -1067,7 +1066,7 @@ ul.caption-slides li {
 }
 
 .creative-hero-page-2 {
-  background: url("../images/index/yacht-design.jpg") no-repeat center center;
+  background: url("../images/dolphin.jpg") no-repeat center center;
   height: 100%;
   width: 100%;
   -webkit-background-size: cover;
@@ -1088,7 +1087,7 @@ ul.caption-slides li {
 }
 
 .creative-hero-page-3 {
-  background: url("../images/temp/hero-slide-8.jpg") no-repeat center center;
+  background: url("../images/dolphin.jpg") no-repeat center center;
   height: 100%;
   -webkit-background-size: cover;
      -moz-background-size: cover;
@@ -1108,7 +1107,7 @@ ul.caption-slides li {
 }
 
 .creative-hero-page-4 {
-  background: url("../images/temp/hero-bg.jpg") no-repeat center center;
+  background: url("../images/dolphin.jpg") no-repeat center center;
   height: 100%;
   -webkit-background-size: cover;
      -moz-background-size: cover;
@@ -4527,7 +4526,6 @@ ul.vertical-menu {
   margin-bottom: 10px;
 }
 #construct-service-section .contact-info ul.information-list li i {
-  float: left;
   color: #ffba00;
   font-size: 13px;
   display: inline-block;
@@ -4575,7 +4573,7 @@ ul.vertical-menu {
   font-size: 38px;
   border-radius: 50%;
   -moz-border-radius: 50%;
-  -webkit-border-radius: 50%
+  -webkit-border-radius: 50%;
   padding-left: 9px;
 }
 

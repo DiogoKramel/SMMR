@@ -20,9 +20,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     opacity: 0;
 }
 
-body { /* Addresses a small issue in webkit: http://bit.ly/NEdoDq */
-	-webkit-backface-visibility: hidden;
-}
 .animated {
 	-webkit-animation-duration: 1.5s;
 	   -moz-animation-duration: 1.5s;
