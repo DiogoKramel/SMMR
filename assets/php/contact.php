@@ -11,7 +11,7 @@ if(isset($_POST['submit']))
 	$message = $_POST['message'];
 
 	$email = new \SendGrid\Mail\Mail(); 
-	$email->setFrom("diogo.kramel@ntnu.no", "Diogo Kramel");
+	$email->setFrom("diogo.kramel@gmail.com", "Diogo Kramel");
 	$email->setSubject($subject);
 	$email->addTo($email_id, $name);
 	$email->addContent("text/plain", $message);
