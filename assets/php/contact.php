@@ -3,12 +3,12 @@
 require '../../vendor/autoload.php';
 $API_KEY = "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";
 
-if(isset($_POST['submit']))
+if(isset($_post['submit']))
 {
-	$name = $_POST['name'];
-	$email_id = $_POST['email'];
-	$subject = $_POST['subject'];
-	$message = $_POST['message'];
+	$name = $_post['name'];
+	$email_id = $_post['email'];
+	$subject = $_post['subject'];
+	$message = $_post['message'];
 
 	$email = new \SendGrid\Mail\Mail(); 
 	$email->setFrom("diogo.kramel@gmail.com", "Diogo Kramel");
