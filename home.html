@@ -2,9 +2,9 @@
 
 require 'vendor/autoload.php';
 
-$from = $_POST['email'];
+$from = new SendGrid\Email(null, "test@example.com");
 $subject = "Hello World from the SendGrid PHP Library!";
-$to = $_POST['email'];
+$to = new SendGrid\Email(null, "test@example.com");
 $content = new SendGrid\Content("text/plain", "Hello, Email!");
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
@@ -16,8 +16,6 @@ echo $response->statusCode();
 echo $response->headers();
 echo $response->body();
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -380,14 +378,6 @@ echo $response->body();
 			</div> 
 		</div> 
 	</div>
-
-	<form action="" method="post">
-		First Name: <input type="text" name="first_name"><br>
-		Last Name: <input type="text" name="last_name"><br>
-		Email: <input type="text" name="email"><br>
-		Message:<br><textarea rows="5" name="message" cols="30"></textarea><br>
-		<button type="submit">Submit</button>
-		</form>
 
 	<!-- Back-to-top -->
 	<div class="back-to-top">
