@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require '../../vendor/autoload.php';
 $API_KEY = "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";
 
 if(isset($_POST['submit']))
