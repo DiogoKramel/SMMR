@@ -15,6 +15,7 @@ if(isset($_POST['submit']))
 	$email->setSubject($subject);
 	$email->addTo($email_id, $name);
 	$email->addContent("text/plain", $message);
+
 	$sendgrid = new \SendGrid($API_KEY);
 	
 	if($sendgrid->send($email));
