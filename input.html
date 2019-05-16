@@ -208,6 +208,7 @@
           </div>
           <div class="col-md-6">
             <div class="container">
+              <br><br><br>
               <img src="assets/images/whales/undentifiedwhale.png" alt="AlternativeWhale" class="image" style="width: 80%;">
               <div class="middle">
                 <div class="text">
@@ -244,101 +245,122 @@
                 <legend><span style="color:#F15F40">Species</span></legend>
                 <div class="col-md-12">
                 <div>Life expectancy:
-                <input type="text" name="ageLifeExpectancy" id="ageLifeExpectancy" value="60" size="4" style="text-align:center"> years  <div class="popup" onclick="myFunction1()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup1">Value of the average life expectancy. The algorithm uses a normal distribution around this value with standard deviation of 10 percent.</span>
-                </div></p></div>
-
+                  <input type="text" name="ageLifeExpectancy" id="ageLifeExpectancy" value="60" size="6" style="text-align:center"> years  
+                  <div class="popup" onclick="myFunction1()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup1">Value of the average life expectancy. The algorithm uses a normal distribution around this value with standard deviation of 10 percent.</span>
+                  </div>
+                </div></p>
                 <div>Age maturation: between
-                <input type="text" name="ageMaturationMin" id="ageMaturationMin" value="8" size="4" style="text-align:center"> and <input type="text" name="ageMaturationMax" id="ageMaturationMax" value="10" size="4" style="text-align:center"> years  <div class="popup" onclick="myFunction2()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup2">Interval of age maturation. The juvenile individuals become adults between these ages following a normal distribution.</span>
-                </div></p></div>
-
-                <div>Probability of birth: <input type="text" name="probBirth" id="probBirth" value="70" size="4" style="text-align:center"> %  <div class="popup" onclick="myFunction6()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup6">The probability of a female having an offspring in the following year by a binomial distribution. It is applied only to females that are not pregnant, resting after pregnancy, or sterile. </span>
-                </div></p></div>
-
+                  <input type="text" name="ageMaturationMin" id="ageMaturationMin" value="8" size="6" style="text-align:center"> and 
+                  <input type="text" name="ageMaturationMax" id="ageMaturationMax" value="10" size="6" style="text-align:center"> years  
+                  <div class="popup" onclick="myFunction2()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup2">Interval of age maturation. The juvenile individuals become adults between these ages following a normal distribution.</span>
+                  </div>
+                </div></p>
+                <div>Probability of birth: 
+                  <input type="text" name="probBirth" id="probBirth" value="70" size="6" style="text-align:center"> %  
+                  <div class="popup" onclick="myFunction6()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup6">The probability of a female having an offspring in the following year by a binomial distribution. It is applied only to females that are not pregnant, resting after pregnancy, or sterile. </span>
+                  </div>
+                </div></p>
                 <div>Probability of survival for adults: 
-                <input type="tex" name="probSurvivalAdults" value="96" size="4" style="text-align:center"> %   <div class="popup" onclick="myFunction4()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup4">Probability of surviving for adult individuals determined by a binomial distribution.</span>
-                </div></p></div>        
-
+                  <input type="tex" name="probSurvivalAdults" value="96" size="6" style="text-align:center"> %   
+                  <div class="popup" onclick="myFunction4()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup4">Probability of surviving for adult individuals determined by a binomial distribution.</span>
+                  </div>
+                </div></p> 
                 <div>Probability of survival for juveniles: 
-                <input type="text" name="probSurvivalJuveniles" value="93" size="4" style="text-align:center"> %  <div class="popup" onclick="myFunction5()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It is, in general, lower than the probability for adults.</span>
-                </div></p></div>
-
-                
+                  <input type="text" name="probSurvivalJuveniles" value="93" size="6" style="text-align:center"> %  
+                  <div class="popup" onclick="myFunction5()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It is, in general, lower than the probability for adults.</span>
+                  </div>
+                </div>
               </fieldset>
-              
               <fieldset>
                 <legend><span style="color:#F15F40">Study area</span></legend>
                 <div class="col-md-12">
-                <div>Initial population:
-                <input type="text" name="initialPopulation" value="50" size="4" style="text-align:center"> individuals</p></div>
-                <div>Percentage of juveniles:
-                <input type="text" name="percentualJuveniles" value="40" size="4" style="text-align:center"> % of juveniles  <div class="popup" onclick="myFunction15()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup15">The percentage of females and males are equally divided in the remaining percentage.</span>
-                </div></p></div>
-                <div>Percentage of females:
-                <input type="text" name="percentualFemales" value="50" size="4" style="text-align:center"> % of females</p></div>
-                <div>Number of ships crossing the study area at the first year:
-                <input type="text" name="numberShipsInitial" value="250" size="4" style="text-align:center" > ships</p></div>
-                <div>Number of ships crossing the study area at the last year:
-                <input type="text" name="numberShipsExpectedFinal" value="300" size="4" style="text-align:center"> ships <div class="popup" onclick="myFunction7()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup7"> It can be higher, equal or lower than the initial number of ships </span>
-                </div></div><br>
+                  <div>Initial population:
+                    <input type="text" name="initialPopulation" value="50" size="6" style="text-align:center"> individuals
+                  </div></p>
+                  <div>Percentage of juveniles:
+                    <input type="text" name="percentualJuveniles" value="40" size="6" style="text-align:center"> % of juveniles
+                    <div class="popup" onclick="myFunction15()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup15">The percentage of females and males are equally divided in the remaining percentage.</span>
+                    </div>
+                  </div></p>
+                  <div>Percentage of females:
+                    <input type="text" name="percentualFemales" value="50" size="6" style="text-align:center"> % of females
+                  </div></p>
+                  <div>Number of ships crossing the study area at the first year:
+                    <input type="text" name="numberShipsInitial" value="250" size="6" style="text-align:center" > ships
+                  </div></p>
+                  <div>Number of ships crossing the study area at the last year:
+                    <input type="text" name="numberShipsExpectedFinal" value="300" size="6" style="text-align:center"> ships 
+                    <div class="popup" onclick="myFunction7()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup7"> It can be higher, equal or lower than the initial number of ships </span>
+                    </div>
+                  </div>
+                </div>
               </fieldset>
-
               <fieldset>
                 <legend><span style="color:#F15F40">Simulation</span></legend>
                 <div class="col-md-12">
-                <div>Time simulated:
-                <input type="text" name="numberYearsSimulated" value="60" size="4" style="text-align:center"> years</p></div>
-                <div>Number of simulations:
-                <input type="text" name="numberSimulations" value="100" size="4" style="text-align:center"> simulations <div class="popup" onclick="myFunction8()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup8">IMPORTANT: MOMENTANEOUSLY DEACTIVATED. How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
+                  <div>Time simulated:
+                    <input type="text" name="numberYearsSimulated" value="60" size="6" style="text-align:center"> years
+                  </div></p>
+                  <div>Number of simulations:
+                    <input type="text" name="numberSimulations" value="100" size="6" style="text-align:center"> simulations 
+                    <div class="popup" onclick="myFunction8()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup8">IMPORTANT: MOMENTANEOUSLY DEACTIVATED. How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
+                    </div>
+                  </div>
                 </div>
-                </div><br>
               </fieldset>
-
               <fieldset>
                 <legend><span style="color:#F15F40">Anthropogenic Threats</span></legend>
                 <div class="col-md-12">
-                <div>Ship strike ratio:
-                  <input type="text" name="strikeRateYear" value="0.35" size="4" style="text-align:center">
-                  <input type="radio" name="strikeType" value="perYear" checked> strikes per year
-                  <input type="radio" name="strikeType" value="perShip"> ships per strike <div class="popup" onclick="myFunction9()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup9">The data can be based on a year basis or ship basis. It is recommended to use a ratio based on data or estimations from the study area. Also, it is strongly recommended to use the ship basis when the amount of ships increase over time. Values do not need to be round.</span>
-                  </div></p></div>
-
-                <div>Category of individuals affecteded by ship strikes: <div class="popup" onclick="myFunction10()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                  <span class="popuptext" id="myPopup10">An worst case scenario can be predicted by selecting the most sensitive class of the population, in this case females or juveniles.</span>
-                </div> <br>
-                  <input type="radio" name="gender" value="1" checked> Random<br>
-                  <input type="radio" name="gender" value="2"> Female<br>
-                  <input type="radio" name="gender" value="3"> Juveniles</div></p>
-                
-                <div>Whaling or Bycatch:
-                  <input type="text" name="whalingRateYear" value="0" size="4" style="text-align:center"> whales fished per years <div class="popup" onclick="myFunction11()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume uneven values.</span>
-                  </div></p></div>
-                
-                <div>Stranding or beaching:
-                  <input type="text" name="strandingRateYear" value="0" size="4" style="text-align:center"> whales found on the beach per year <div class="popup" onclick="myFunction12()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume uneven values.</span>
-                  </div></p></div>
-                
-                <div>Other threats:
-                    <input type="text" name="otherRateYear" value="0" size="4" style="text-align:center"> whales extracted per year <div class="popup" onclick="myFunction13()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                  <div>Ship strike ratio:
+                    <input type="text" name="strikeRateYear" value="0.35" size="8" style="text-align:center">
+                    <input type="radio" name="strikeType" value="perYear" checked> strikes per year
+                    <input type="radio" name="strikeType" value="perShip"> ships per strike 
+                    <div class="popup" onclick="myFunction9()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup9">The data can be based on a year basis or ship basis. It is recommended to use a ratio based on data or estimations from the study area. Also, it is strongly recommended to use the ship basis when the amount of ships increase over time. Values do not need to be round.</span>
+                    </div>
+                  </div></p>
+                  <div>Category of individuals affecteded by ship strikes:
+                    <div class="popup" onclick="myFunction10()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                    <span class="popuptext" id="myPopup10">An worst case scenario can be predicted by selecting the most sensitive class of the population, in this case females or juveniles.</span>
+                  </div><br>
+                    <input type="radio" name="gender" value="1" checked> Random<br>
+                    <input type="radio" name="gender" value="2"> Female<br>
+                    <input type="radio" name="gender" value="3"> Juveniles
+                  </div></p>
+                  <div>Whaling or Bycatch:
+                    <input type="text" name="whalingRateYear" value="0" size="6" style="text-align:center"> whales fished per years 
+                    <div class="popup" onclick="myFunction11()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume uneven values.</span>
+                    </div>
+                  </div></p>
+                  <div>Stranding or beaching:
+                    <input type="text" name="strandingRateYear" value="0" size="6" style="text-align:center"> whales found on the beach per year 
+                    <div class="popup" onclick="myFunction12()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume uneven values.</span>
+                    </div>
+                  </div></p>
+                  <div>Other threats:
+                    <input type="text" name="otherRateYear" value="0" size="6" style="text-align:center"> whales extracted per year 
+                    <div class="popup" onclick="myFunction13()"><i class="fa fa-1x fa-binoculars style=regular"></i>
                       <span class="popuptext" id="myPopup13">In case the study area faces a threat that was not predicted, the amount of individuals to affected and removed each year can be inserted here. It can assume uneven values.</span>
-                    </div></p></div></div></div>
+                    </div>
+                  </div>
+                </div>
               </fieldset>
-
               <br><br>
               <input type="submit" class="submit" value="SIMULATE">
             </form>
           </div>
         </div>
+      </div>
     </div>
   </section>
 
@@ -353,162 +375,6 @@
     </div>
   </footer>
 
-  <script>
-    // When the user clicks on <div>, open the popup
-    function myFunction1() {
-      var popup = document.getElementById("myPopup1");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction2() {
-      var popup = document.getElementById("myPopup2");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction3() {
-      var popup = document.getElementById("myPopup3");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction4() {
-      var popup = document.getElementById("myPopup4");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction5() {
-      var popup = document.getElementById("myPopup5");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction6() {
-      var popup = document.getElementById("myPopup6");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction7() {
-      var popup = document.getElementById("myPopup7");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction8() {
-      var popup = document.getElementById("myPopup8");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-      function myFunction9() {
-        var popup = document.getElementById("myPopup9");
-        popup.classList.toggle("show");
-      }
-    </script>
-  <script>
-      function myFunction10() {
-        var popup = document.getElementById("myPopup10");
-        popup.classList.toggle("show");
-      }
-    </script>
-  <script>
-      function myFunction11() {
-        var popup = document.getElementById("myPopup11");
-        popup.classList.toggle("show");
-      }
-    </script>
-  <script>
-    function myFunction12() {
-      var popup = document.getElementById("myPopup12");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction13() {
-      var popup = document.getElementById("myPopup13");
-      popup.classList.toggle("show");
-    }
-  </script>
-  <script>
-    function myFunction15() {
-      var popup = document.getElementById("myPopup15");
-      popup.classList.toggle("show");
-    }
-  </script>
-
-
-
-  <script>
-    var speciesSelected = [];
-    function dataSpermWhale() {
-      document.getElementById("ageLifeExpectancy").value = "70"
-      document.getElementById("ageMaturationMin").value = "9"
-      document.getElementById("ageMaturationMax").value = "10"
-      document.getElementById("probBirth").value = "25"
-      localStorage.setItem("speciesSelected", "Sperm Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataBlueWhale() {
-      document.getElementById("ageLifeExpectancy").value = "85"
-      document.getElementById("ageMaturationMin").value = "5"
-      document.getElementById("ageMaturationMax").value = "10"
-      document.getElementById("probBirth").value = "40"
-      localStorage.setItem("speciesSelected", "Blue Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataFinWhale() {
-      document.getElementById("ageLifeExpectancy").value = "90"
-      document.getElementById("ageMaturationMin").value = "7"
-      document.getElementById("ageMaturationMax").value = "12"
-      document.getElementById("probBirth").value = "40"
-      localStorage.setItem("speciesSelected", "Fin Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataRightWhale() {
-      document.getElementById("ageLifeExpectancy").value = "60"
-      document.getElementById("ageMaturationMin").value = "5"
-      document.getElementById("ageMaturationMax").value = "21"
-      document.getElementById("probBirth").value = "40"
-      localStorage.setItem("speciesSelected", "Right Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataHumpbackWhale() {
-      document.getElementById("ageLifeExpectancy").value = "50"
-      document.getElementById("ageMaturationMin").value = "5"
-      document.getElementById("ageMaturationMax").value = "7"
-      document.getElementById("probBirth").value = "33"
-      localStorage.setItem("speciesSelected", "Humpback Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataGrayWhale() {
-      document.getElementById("ageLifeExpectancy").value = "60"
-      document.getElementById("ageMaturationMin").value = "5"
-      document.getElementById("ageMaturationMax").value = "11"
-      document.getElementById("probBirth").value = "40"
-      localStorage.setItem("speciesSelected", "Gray Whale")
-    }
-  </script>
-  <script>
-    var speciesSelected = [];
-    function dataAlternativeWhale() {
-      localStorage.setItem("speciesSelected", "Alternative Species")
-    }
-  </script>
-
-  
-
 </body>
+
 </html>
