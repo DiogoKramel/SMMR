@@ -3,7 +3,8 @@
 */
 // extracting the input data from the url
 var url = location.search;                                              // get the raw url with the input data
-var initialPopulation = $.query.get('initialPopulation');               // number of whales simulated
+$initialPopulation = $_GET['initialPopulation'] // number of whales simulated
+console.log($initialPopulation);
 var percentJuveniles = $.query.get('percentualJuveniles');              // percentage of juveniles in the population
 var percentFemales = $.query.get('percentualFemales');                  // percentage of females in the population
 var numberShipsInitial = $.query.get('numberShipsInitial');             // number of ships crossing the area per year
