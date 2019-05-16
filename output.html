@@ -36,11 +36,11 @@
 
   <!-- JS libraries and scripts -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-  <script src="node_modules/jquery-object/jquery.query-object.js"></script>
-  <script src="node_modules/discrete-sampling/dist/discrete.js"></script>
+  <script src="assets/js/jquery.query-object.js"></script>
+  <script src="assets/snippets/discrete.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.10.0/math.js"></script>
-  <script src="simulation.js"></script>
+  <script src="http://davidbau.com/encode/seedrandom-min.js"></script>
   <script src="plots.js"></script>
 
   <!-- JS libraries and scripts -->
@@ -70,11 +70,8 @@
   <script src="assets/js/jquery.gmaps.js"></script>
   <script src="assets/js/main.js"></script>
   
-<style>
-
-
-</style>
 </head>
+
 <body>
 
   <!-- Preload the Whole Page -->
@@ -129,82 +126,43 @@
             <h3 class="bt-0">Parameters implemented</h3>
             <p>The simulation is concluded. An overview of the parameters that were implemented in the algorithm is listed in the Table below. 
               Following the table, you will find the results plotted over time. All of them can be exported as image to your computer. 
-              At the end of the page you can also find the link to rerun the simulation. </p>
+              At the end of the page you can also find the link to rerun the simulation.
+            </p>
             <div id="input-data" class="arialblack centerimg" style="width: 60%;"></div>
-            
-            
-            
-            
-            
-            <script>
-            function checkStorage(){
-                if (localStorage.getItem("speciesSelected") == "Sperm Whale") {
-                    document.getElementById("WhaleFig").src = "assets/images/whales/sperm-whale.png";
-                } else  if (localStorage.getItem("speciesSelected") == "Blue Whale") {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/blue-whale.png";
-                } else  if (localStorage.getItem("speciesSelected") == "Fin Whale") {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/fin-whale.png";
-                } else  if (localStorage.getItem("speciesSelected") == "Right Whale") {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/right-whale.png";
-                } else  if (localStorage.getItem("speciesSelected") == "Gray Whale") {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/gray-whale.png";
-                } else  if (localStorage.getItem("speciesSelected") == "Humpback Whale") {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/humpback-whale.png";
-                } else {
-                  document.getElementById("WhaleFig").src = "assets/images/whales/undentifiedwhale.png";
-                  localStorage.setItem("speciesSelected", "Alternative Species")
-                }
-            }
-            </script>
-            
-            
-
-
             <h3 class="bt-0">Species selected</h3>
             <div class="col-md-12">
-            <p><div id="result" class="arialblack"></div></p>
-            <img src="" id ="WhaleFig" class="centerimg"><script>checkStorage();</script><br><br></div>
-            
+              <p><div id="result" class="arialblack"></div></p>
+              <img src="" id ="WhaleFig" class="centerimg"><script>checkStorage();</script><br><br>
+            </div>
             <script type="text/javascript"> 
               var x = "The species selected is the <b><i>" + localStorage.getItem("speciesSelected") +"</i></b>. If you want to edit the input parameters for the <b><i>" + localStorage.getItem("speciesSelected") +"</i></b>, it is possible to return and personalise them in order to meet your study area, or to analyse different scenarios for higher degrees of risk.";
               document.getElementById("result").innerHTML = x; 
             </script>
-            
-
             <h3 class="bt-0">SIMULATION RESULTS</h3>
-
-            <p>Through this line chart we can visualize the trend over time (in years). The chart shows the total population variaton throughout time, as well as divided in three categories: adult females, adult males and juveniles of both genders.</p>
+            <p>Through this line chart we can visualize the trend over time (in years). 
+              The chart shows the total population variaton throughout time, as well as divided in three categories: 
+              adult females, adult males and juveniles of both genders.
+            </p>
+            <!--
             <div id="plot-population" style="width: 100%;"></div><br>
-            
-            <p>This plot can help you understand the aging process of the population. In case the happen to be growing older, the feritle will decrease and in a near future population will also decrease.</p>
-            
-            <div id="plot-aging" style="width: 100%;"></div></div><!--<div class="col-md-6">
-            <div id="plot-aging-profile" style="width: 100%;"></div></div><br>-->
-            
+            <p>This plot can help you understand the aging process of the population. 
+              In case the happen to be growing older, the feritle will decrease and in a near future population will also decrease.
+            </p>
+            <div id="plot-aging" style="width: 100%;"></div></div><div class="col-md-6">
+            <div id="plot-aging-profile" style="width: 100%;"></div></div><br>
             <p>This is histogram is a representation of the distribution of the ship strikes and natural deaths observed in the time period simulated.</p>
-            <div id="plot-deaths" style="width: 100%;"></div><br><!--
-
+            <div id="plot-deaths" style="width: 100%;"></div><br>
             <p>A probability density function (PDF), or density of a continuous random variable, is a function, whose value at any given sample (or point) in the sample space (the set of possible values taken by the random variable) can be interpreted as providing a relative likelihood that the value of the random variable would equal that sample. The sum of each individual probability should result in 100%.</p>
             <div id="plot-probability-normal" style="width: 100%;"></div><br>
-            
             <p>Cumulative distribution function (CDF) of a variable Y, evaluated at x, is the probability that Y will take a value less than or equal to x. In other words, the plot shows the probability of having the number of strikes in the horizontal axis (or less).</p>
-            <div id="plot-probability" style="width: 100%;"></div><br>-->
-            
-            
-            <script src=http://davidbau.com/encode/seedrandom-min.js></script>
-            <script src="node_modules/mathjs/dist/math.js"></script>
-            <script src="node_modules/discrete-sampling/dist/discrete.js"></script>
-            <script src="simulation.js"></script>
-            <script src="plots.js"></script>
-            <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
-          </div> <!-- End col-sm-4 -->
-        </div> <!-- End row -->
+            <div id="plot-probability" style="width: 100%;"></div><br>
+          -->
+          </div> 
+        </div> 
       </div>
     </div>
   </section>
 
-    
   <a href="input.html" class="section-scroll btn btn-md btn-primary btn-redo-analysis">CHANGE PARAMETERS AND SIMULATE AGAIN</a>
   <br><br><br><br><br>
   
@@ -220,5 +178,9 @@
   </footer>
 
 </body>
+
+<!-- Scripts for simulation and ploting -->
+<script src="plots.js"></script>
+<script src="simulation.js"></script>
 
 </html>

@@ -1,54 +1,84 @@
-/********************************************************************************************
- * INPUT DATA OF THE STUDY AREA (BY THE USER)
-*/
-// extracting the input data from the url
-var url = location.search;                                              // get the raw url with the input data
-$initialPopulation = $_GET['initialPopulation'] // number of whales simulated
-console.log($initialPopulation);
-var percentJuveniles = $.query.get('percentualJuveniles');              // percentage of juveniles in the population
-var percentFemales = $.query.get('percentualFemales');                  // percentage of females in the population
-var numberShipsInitial = $.query.get('numberShipsInitial');             // number of ships crossing the area per year
-var numberShipsFinal = $.query.get('numberShipsExpectedFinal');         // number of ships at the end of the simulation
-var ageLifeExpectancy = $.query.get('ageLifeExpectancy');               // life expectancy
-var ageMaturationMax = $.query.get('ageMaturationMax');                 // maximum age of sexual maturarion
-var ageMaturationMin = $.query.get('ageMaturationMin');                 // minimum age of sexual maturarion
-var probBirth = $.query.get('probBirth');                               // probability for females having an offspring
-var probSurvivalAdults = $.query.get('probSurvivalAdults');             // probability of survival at each year for adults
-var probSurvivalJuveniles = $.query.get('probSurvivalJuveniles');       // probability of survival at each year for juveniles
-var timeSimulated = $.query.get('numberYearsSimulated');                // time of simulation in years
-var numberSimulation = $.query.get('numberSimulations');                // number of repetions for each simulation (default 1000)
-var strikeRateYear = $.query.get('strikeRateYear');                     // average number of removals per year
-var strikeRateShip = $.query.get('strikeRateShip');                     // average number of removals per ship (if strikeRateYear = 0)
-//var strikeType = $.query.get('strikeType');                           // average number of removals per ship (if strikeRateYear = 0)
-//var strikesGender = $.query.get('gender');                            // random (=1) females (=2) juveniles (=3)
-var whalingRateYear = $.query.get('whalingRateYear');                   // amount of animals whaled by year
-var strandingRateYear = $.query.get('strandingRateYear');               // amount of individuals found dead on the beach
-var otherRateYear = $.query.get('otherRateYear');   
+/* INPUT DATA OF THE STUDY AREA (BY THE USER) */
+// Extracting the input data from the url
+var params = {};
+var getParams = function (url) {
+	var parser = document.createElement('a');
+	parser.href = url;
+	var query = parser.search.substring(1);
+	var vars = query.split('&');
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+	}
+    return params;
+};
+
+var url = location.search; // Get the raw url with the input data
+getParams(url);
+
 
 var strikeType = 'perYear';
 var strikeClass = ['male', 'female', 'juvenile'];       //random //female ['', 'female', ''] // juvenile ['', '', 'juvenile']
-var initialPopulationJuveniles = Math.round(initialPopulation*percentJuveniles/100);
-var initialPopulationFemales = Math.ceil((initialPopulation-initialPopulationJuveniles)*percentFemales/100);
-var initialPopulationMales = initialPopulation-initialPopulationJuveniles-initialPopulationFemales;
+var initialPopulationJuveniles = Math.round(params.initialPopulation * params.percentJuveniles / 100);
+var initialPopulationFemales = Math.ceil((params.initialPopulation - params.initialPopulationJuveniles) * params.percentFemales / 100);
+var initialPopulationMales = params.initialPopulation - params.initialPopulationJuveniles - params.initialPopulationFemales;
 var numberShips = [];
-for (i = 0; i <= timeSimulated; i++) {
-    numberShips[i] = Math.round(i*(numberShipsFinal-numberShipsInitial)/timeSimulated+numberShipsInitial)
+for (i = 0; i <= params.timeSimulated; i++) {
+    numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.timeSimulated + params.numberShipsInitial)
 }
-var currentPopulation = initialPopulation;
+var currentPopulation = params.initialPopulation;
 //var percentFemales = (100-percentJuveniles)/2;
 //var percentMales = 100-percentJuveniles-percentFemales;
-var ageFemaleSterile = Math.round((ageLifeExpectancy-ageMaturationMax)*0.6+ageMaturationMax);
+var ageFemaleSterile = Math.round((params.ageLifeExpectancy - params.ageMaturationMax) * 0.6 + params.ageMaturationMax);
 var yearStartSimulation = 2019;
 var currentYear = yearStartSimulation;  
 
+/* PRINT WHALE PICTURE */
+function checkStorage(){
+    if (localStorage.getItem("speciesSelected") == "Sperm Whale") {
+        document.getElementById("WhaleFig").src = "assets/images/whales/sperm-whale.png";
+    } else  if (localStorage.getItem("speciesSelected") == "Blue Whale") {
+      document.getElementById("WhaleFig").src = "assets/images/whales/blue-whale.png";
+    } else  if (localStorage.getItem("speciesSelected") == "Fin Whale") {
+      document.getElementById("WhaleFig").src = "assets/images/whales/fin-whale.png";
+    } else  if (localStorage.getItem("speciesSelected") == "Right Whale") {
+      document.getElementById("WhaleFig").src = "assets/images/whales/right-whale.png";
+    } else  if (localStorage.getItem("speciesSelected") == "Gray Whale") {
+      document.getElementById("WhaleFig").src = "assets/images/whales/gray-whale.png";
+    } else  if (localStorage.getItem("speciesSelected") == "Humpback Whale") {
+      document.getElementById("WhaleFig").src = "assets/images/whales/humpback-whale.png";
+    } else {
+      document.getElementById("WhaleFig").src = "assets/images/whales/undentifiedwhale.png";
+      localStorage.setItem("speciesSelected", "Alternative Species")
+    }
+};
 
 /********************************************************************************************
  * PLOTS CONFIGURATIOIN
 ********************************************************************************************/
 // table input data
 var values = [
-    ['Time simulated', 'Number of simulations', 'Initial population','Percentage of juveniles', 'Initial number of ships', 'Final number of ships', 'Type of strike', 'Rate of strikes',  'Life expectancy', 'Age maturation', 'Probability of birth', 'Probability of natural death for adults', 'Probability of natural death for juveniles','Whaling', 'Stranding', 'Others'],
-    [timeSimulated+' years', numberSimulation+' simulations', initialPopulation+' individuals', percentJuveniles+'%',numberShipsInitial+' ships', numberShipsFinal+' ships', 'Random', strikeRateYear+' strikes per year or ship',  ageLifeExpectancy+' years', ageMaturationMin + '-' + ageMaturationMax +' years old', probBirth+'%', probSurvivalAdults+'%', probSurvivalJuveniles+'%', '0 %', '0 %', '0 %']] //whalingRateYear+'%', strandingRateYear+'%', otherRateYear+'%'
+    ['Time simulated', 'Number of simulations', 'Initial population',
+    'Percentage of juveniles', 'Initial number of ships', 'Final number of ships',
+    'Type of strike', 'Rate of strikes',  'Life expectancy',
+    'Age maturation', 'Probability of birth', 'Probability of natural death for adults',
+    'Probability of natural death for juveniles','Whaling', 'Stranding', 'Others'],
+    [params.numberYearsSimulated+' years', 
+    params.numberSimulations+' simulations', 
+    params.initialPopulation+' individuals', 
+    params.percentualJuveniles+'%', 
+    params.numberShipsInitial+' ships', 
+    params.numberShipsExpectedFinal+' ships', 'Random', 
+    params.strikeRateYear+' strikes per year or ship',  
+    params.ageLifeExpectancy+' years', 
+    params.ageMaturationMin + '-' + params.ageMaturationMax +' years old',
+    params.probBirth+'%',
+    params.probSurvivalAdults+'%',
+    params.probSurvivalJuveniles+'%', 
+    params.whalingRateYear+'%', 
+    params.strandingRateYear+'%', 
+    params.otherRateYear+'%']]
+
 var data = [{
 type: 'table',
 columnorder: [1,2],
@@ -77,10 +107,9 @@ var layout = {
 };
 Plotly.plot('input-data', data, layout);
 
-
 // build x axis with the years range
 var xAxis = [];
-for (x = 0; x <= timeSimulated; x++) {                            
+for (x = 0; x <= params.timeSimulated; x++) {                            
     xAxis[x] = yearStartSimulation + x;
 }
 xAxis[0] = yearStartSimulation;
