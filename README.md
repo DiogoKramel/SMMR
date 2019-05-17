@@ -18,11 +18,11 @@ You are also welcome to create [issues](https://github.com/DiogoKramel/SMMR/issu
 
 A short summary of the files structure is provided below to encourage users to modify them to their own usage.
 
-[simulation.js](simulation.py)
+[simulation.js](simulation.js)
 
 Contains the routine that performs the core simulation implemented in the analysis.
 
-[plots.js](plots.py)
+[plots.js](plots.js)
 
 The data provided by the simulatino is converted to graphs using the Plotly framework.
 
@@ -32,7 +32,7 @@ The data provided by the simulatino is converted to graphs using the Plotly fram
 You can clone or download this repo:
 
 ```
-git clone https://github.com/AppName
+git clone https://github.com/DiogoKramel/SMMR
 ```
 
 Then change directory into the repo:
@@ -47,7 +47,7 @@ Now create and activate the virtual environment:
 http-server -c-1
 ```
 
-Or you can simply download the repository and run the [home.html] file. Make sure you have internet connection.
+Or you can simply download the repository and run the **home.html** file. Make sure you have internet connection.
 
 ## Licensing
 
