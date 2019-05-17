@@ -1,86 +1,50 @@
+// Assign globals
+var params = {};
+var initialPopulationJuveniles,
+    initialPopulationFemales, 
+    initialPopulationMales, 
+    currentYear, 
+    ageFemaleSterile, 
+    currentPopulation, 
+    strikeType, 
+    strikeClass, 
+    yearStartSimulation;
+var populationProperties = {};
+
 function inputData() {
     // extracting the input data from the url
-    var url = location.search;                                              // get the raw url with the input data
-    var initialPopulation = $.query.get('initialPopulation');               // number of whales simulated
-    var percentJuveniles = $.query.get('percentualJuveniles');              // percentage of juveniles in the population
-    var percentFemales = $.query.get('percentualFemales');                  // percentage of females in the population
-    var numberShipsInitial = $.query.get('numberShipsInitial');             // number of ships crossing the area per year
-    var numberShipsFinal = $.query.get('numberShipsExpectedFinal');         // number of ships at the end of the simulation
-    var ageLifeExpectancy = $.query.get('ageLifeExpectancy');               // life expectancy
-    var ageMaturationMax = $.query.get('ageMaturationMax');                 // maximum age of sexual maturarion
-    var ageMaturationMin = $.query.get('ageMaturationMin');                 // minimum age of sexual maturarion
-    var probBirth = $.query.get('probBirth');                               // probability for females having an offspring
-    var probSurvivalAdults = $.query.get('probSurvivalAdults');             // probability of survival at each year for adults
-    var probSurvivalJuveniles = $.query.get('probSurvivalJuveniles');       // probability of survival at each year for juveniles
-    var timeSimulated = $.query.get('numberYearsSimulated');                // time of simulation in years
-    var numberSimulation = $.query.get('numberSimulations');                // number of repetions for each simulation (default 1000)
-    var strikeRateYear = $.query.get('strikeRateYear');                     // average number of removals per year
-    var strikeRateShip = $.query.get('strikeRateShip');                     // average number of removals per ship (if strikeRateYear = 0)
-    //var strikeType = $.query.get('strikeType');                           // average number of removals per ship (if strikeRateYear = 0)
-    //var strikesGender = $.query.get('gender');                            // random (=1) females (=2) juveniles (=3)
-    var whalingRateYear = $.query.get('whalingRateYear');                   // amount of animals whaled by year
-    var strandingRateYear = $.query.get('strandingRateYear');               // amount of individuals found dead on the beach
-    var otherRateYear = $.query.get('otherRateYear');   
+    var url = location.search; // Get the raw url with the input data
+    var parser = document.createElement('a');
+    parser.href = url;
+    var query = parser.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split('=');
+        params[pair[0]] = decodeURIComponent(pair[1]);
+    };
 
-    var strikeType = 'perYear';
-    var strikeClass = ['male', 'female', 'juvenile'];       //random //female ['', 'female', ''] // juvenile ['', '', 'juvenile']
-    var initialPopulationJuveniles = Math.round(initialPopulation*percentJuveniles/100);
-    var initialPopulationFemales = Math.ceil((initialPopulation-initialPopulationJuveniles)*percentFemales/100);
-    var initialPopulationMales = initialPopulation-initialPopulationJuveniles-initialPopulationFemales;
+    strikeType = 'perYear';
+    strikeClass = ['male', 'female', 'juvenile'];       //random //female ['', 'female', ''] // juvenile ['', '', 'juvenile']
+    initialPopulationJuveniles = Math.round(params.initialPopulation * params.percentualJuveniles / 100);
+    initialPopulationFemales = Math.ceil((params.initialPopulation - initialPopulationJuveniles) * params.percentualFemales / 100);
+    initialPopulationMales = params.initialPopulation - initialPopulationJuveniles - initialPopulationFemales;
     var numberShips = [];
-    for (i = 0; i <= timeSimulated; i++) {
-        numberShips[i] = Math.round(i*(numberShipsFinal-numberShipsInitial)/timeSimulated+numberShipsInitial)
+    for (i = 0; i <= params.timeSimulated; i++) {
+        numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.timeSimulated + params.numberShipsInitial)
     }
-    var currentPopulation = initialPopulation;
+    currentPopulation = params.initialPopulation;
     //var percentFemales = (100-percentJuveniles)/2;
     //var percentMales = 100-percentJuveniles-percentFemales;
-    var ageFemaleSterile = Math.round((ageLifeExpectancy-ageMaturationMax)*0.6+ageMaturationMax);
-    var yearStartSimulation = 2019;
-    var currentYear = yearStartSimulation;  
+    ageFemaleSterile = Math.round((params.ageLifeExpectancy - params.ageMaturationMax) * 0.6 + params.ageMaturationMax);
+    yearStartSimulation = 2019;
+    currentYear = yearStartSimulation;
 }
 
 SimulationYear = function() {
 /********************************************************************************************
  * INPUT DATA OF THE STUDY AREA (BY THE USER)
 */
-// extracting the input data from the url
-var url = location.search;                                              // get the raw url with the input data
-var initialPopulation = $.query.get('initialPopulation');               // number of whales simulated
-var percentJuveniles = $.query.get('percentualJuveniles');              // percentage of juveniles in the population
-var percentFemales = $.query.get('percentualFemales');                  // percentage of females in the population
-var numberShipsInitial = $.query.get('numberShipsInitial');             // number of ships crossing the area per year
-var numberShipsFinal = $.query.get('numberShipsExpectedFinal');         // number of ships at the end of the simulation
-var ageLifeExpectancy = $.query.get('ageLifeExpectancy');               // life expectancy
-var ageMaturationMax = $.query.get('ageMaturationMax');                 // maximum age of sexual maturarion
-var ageMaturationMin = $.query.get('ageMaturationMin');                 // minimum age of sexual maturarion
-var probBirth = $.query.get('probBirth');                               // probability for females having an offspring
-var probSurvivalAdults = $.query.get('probSurvivalAdults');             // probability of survival at each year for adults
-var probSurvivalJuveniles = $.query.get('probSurvivalJuveniles');       // probability of survival at each year for juveniles
-var timeSimulated = $.query.get('numberYearsSimulated');                // time of simulation in years
-var numberSimulation = $.query.get('numberSimulations');                // number of repetions for each simulation (default 1000)
-var strikeRateYear = $.query.get('strikeRateYear');                     // average number of removals per year
-var strikeRateShip = $.query.get('strikeRateShip');                     // average number of removals per ship (if strikeRateYear = 0)
-//var strikeType = $.query.get('strikeType');                           // average number of removals per ship (if strikeRateYear = 0)
-//var strikesGender = $.query.get('gender');                            // random (=1) females (=2) juveniles (=3)
-var whalingRateYear = $.query.get('whalingRateYear');                   // amount of animals whaled by year
-var strandingRateYear = $.query.get('strandingRateYear');               // amount of individuals found dead on the beach
-var otherRateYear = $.query.get('otherRateYear');   
-
-var strikeType = 'perYear';
-var strikeClass = ['male', 'female', 'juvenile'];       //random //female ['', 'female', ''] // juvenile ['', '', 'juvenile']
-var initialPopulationJuveniles = Math.round(initialPopulation*percentJuveniles/100);
-var initialPopulationFemales = Math.ceil((initialPopulation-initialPopulationJuveniles)*percentFemales/100);
-var initialPopulationMales = initialPopulation-initialPopulationJuveniles-initialPopulationFemales;
-var numberShips = [];
-for (i = 0; i <= timeSimulated; i++) {
-    numberShips[i] = Math.round(i*(numberShipsFinal-numberShipsInitial)/timeSimulated+numberShipsInitial)
-}
-var currentPopulation = initialPopulation;
-//var percentFemales = (100-percentJuveniles)/2;
-//var percentMales = 100-percentJuveniles-percentFemales;
-var ageFemaleSterile = Math.round((ageLifeExpectancy-ageMaturationMax)*0.6+ageMaturationMax);
-var yearStartSimulation = 2019;
-var currentYear = yearStartSimulation;  
+inputData();
 
 // generating the same random numbers
 var myrng = new Math.seedrandom(1234);
@@ -93,17 +57,17 @@ var juvenilePopulationPerYear =[], adultFemalePopulationPerYear = [], adultMaleP
 totalPopulationPerYear = [];
 juvenilePopulationPerYear =[];
 
-totalPopulationPerYear[0] = initialPopulation, juvenilePopulationPerYear[0] = initialPopulationJuveniles,adultFemalePopulationPerYear[0] = initialPopulationFemales, adultMalePopulationPerYear[0] = initialPopulationMales;
+totalPopulationPerYear[0] = params.initialPopulation, juvenilePopulationPerYear[0] = initialPopulationJuveniles,adultFemalePopulationPerYear[0] = initialPopulationFemales, adultMalePopulationPerYear[0] = initialPopulationMales;
 
 // create the initial population and assign id, age/birth, class, and wheter females are pregnant
-var populationProperties = {}
-for (var i = 1; i <= initialPopulation; i++) {
+
+for (var i = 1; i <= params.initialPopulation; i++) {
     populationProperties[i] = new agent()
     populationProperties[i].id = i;
     if (i <= initialPopulationJuveniles) {
-        populationProperties[i].age = Math.floor(myrng()*ageMaturationMax);
+        populationProperties[i].age = Math.floor(myrng()*params.ageMaturationMax);
         populationProperties[i].yearBirth = yearStartSimulation-populationProperties[i].age;
-        var femaleOrMale = SJS.Binomial(1, percentFemales/100);
+        var femaleOrMale = SJS.Binomial(1, params.percentFemales/100);
         if (femaleOrMale.sample(1) == true) {
             populationProperties[i].gender = 'female';
         } else {
@@ -112,11 +76,11 @@ for (var i = 1; i <= initialPopulation; i++) {
     } else if (i > initialPopulationJuveniles && i <= (initialPopulationJuveniles+initialPopulationFemales)) {
         populationProperties[i].class = 'adult';
         populationProperties[i].gender = 'female';
-        populationProperties[i].age = Math.floor(myrng()*(ageLifeExpectancy-ageMaturationMax)+ageMaturationMax);
+        populationProperties[i].age = Math.floor(myrng()*(params.ageLifeExpectancy-params.ageMaturationMax)+params.ageMaturationMax);
         populationProperties[i].yearBirth = yearStartSimulation-populationProperties[i].age;
         populationProperties[i].yearSexualMaturation = 'unknown';
         if (populationProperties[i].age < ageFemaleSterile) {
-            var pregnantOrNot = SJS.Binomial(1, probBirth/100);
+            var pregnantOrNot = SJS.Binomial(1, params.probBirth/100);
             if (pregnantOrNot.sample(1) == true) {
                 populationProperties[i].pregnancyStatus = 'pregnant';
             } else {
@@ -129,7 +93,7 @@ for (var i = 1; i <= initialPopulation; i++) {
     } else {
         populationProperties[i].class = 'adult';
         populationProperties[i].gender = 'male';
-        populationProperties[i].age = Math.floor(myrng()*(ageLifeExpectancy-ageMaturationMax)+ageMaturationMax);
+        populationProperties[i].age = Math.floor(myrng()*(params.ageLifeExpectancy-params.ageMaturationMax)+params.ageMaturationMax);
         populationProperties[i].yearBirth = yearStartSimulation-populationProperties[i].age;
         populationProperties[i].yearSexualMaturation = 'unknown';
     }
@@ -167,8 +131,8 @@ for (var y = 1; y <= timeSimulated; y++) {
                     naturalDeathPerYear[y] +=1; 
                 } 
             } else {
-                var liveOrNot = SJS.Binomial(1, probSurvivalAdults/100);
-                if (populationProperties[i].age > 1.1*ageLifeExpectancy) {
+                var liveOrNot = SJS.Binomial(1, params.probSurvivalAdults/100);
+                if (populationProperties[i].age > 1.1*params.ageLifeExpectancy) {
                     makeDead(i);
                     populationProperties[i].causeDeath = 'natural';
                     naturalDeathPerYear[y] +=1;
@@ -186,7 +150,7 @@ for (var y = 1; y <= timeSimulated; y++) {
     // number of agent that will be stroke by ships
     var numberShipStrikes = 0;
     if (strikeType == 'perYear') {
-        var poisson = SJS.Poisson(strikeRateYear);
+        var poisson = SJS.Poisson(params.strikeRateYear);
         numberShipStrikes = Number(poisson.sample(1));
     } else {
         var poisson = SJS.Poisson(strikeRateShip*numberShips[currentYear-yearStartSimulation-1]);
@@ -208,7 +172,7 @@ for (var y = 1; y <= timeSimulated; y++) {
 
     // which agents will be whaled
     var numberWhalingWhales = 0;
-    if (whalingRateYear > 0) {
+    if (params.whalingRateYear > 0) {
         var poisson = SJS.Poisson(whalingRateYear);
         numberWhalingWhales = Number(poisson.sample(1));
         for (i = 0; i < numberWhalingWhales; i++) {
@@ -226,7 +190,7 @@ for (var y = 1; y <= timeSimulated; y++) {
 
     // which agents will eventually strand
     var numberStrandingWhales = 0;
-    if (strandingRateYear > 0) {
+    if (params.strandingRateYear > 0) {
         var poisson = SJS.Poisson(strandingRateYear);
         numberStrandingWhales = Number(poisson.sample(1));
         for (i = 0; i < numberStrandingWhales; i++) {
@@ -244,7 +208,7 @@ for (var y = 1; y <= timeSimulated; y++) {
 
     // which agents will eventually die by other means
     var numberOtherThreatWhales = 0;
-    if (otherRateYear > 0) {
+    if (params.otherRateYear > 0) {
         var poisson = SJS.Poisson(otherRateYear);
         numberOtherThreatWhales = Number(poisson.sample(1));
         for (i = 0; i < numberOtherThreatWhales; i++) {
@@ -263,10 +227,10 @@ for (var y = 1; y <= timeSimulated; y++) {
     // if juveniles will mature or not
     for (var i = 1; i <= currentPopulation; i++) {
         if (populationProperties[i].class == 'juvenile') {
-            if (populationProperties[i].age == ageMaturationMax) {
+            if (populationProperties[i].age == params.ageMaturationMax) {
                 populationProperties[i].class = 'adult'
-            } else if (populationProperties[i].age >= ageMaturationMin) {
-                var matureOrNot = SJS.Binomial(1, 1/(ageMaturationMax-ageMaturationMin));
+            } else if (populationProperties[i].age >= params.ageMaturationMin) {
+                var matureOrNot = SJS.Binomial(1, 1/(params.ageMaturationMax-params.ageMaturationMin));
                 if (matureOrNot.sample(1) == true) {
                     populationProperties[i].class = 'adult';
                     populationProperties[i].ageSexualMaturation = populationProperties[i].age;
@@ -279,10 +243,10 @@ for (var y = 1; y <= timeSimulated; y++) {
     for (var i = 1; i <= currentPopulation; i++) {
         if (populationProperties[i].gender == 'female' && populationProperties[i].class == 'adult') {
             if (populationProperties[i].pregnancyStatus == 'pregnant') {
-                currentPopulation += 1;
+                currentPopulation++;
                 populationProperties[currentPopulation] = new agent();
                 populationProperties[currentPopulation].id = currentPopulation;
-                var femaleOrMale = SJS.Binomial(1, percentFemales/100);
+                var femaleOrMale = SJS.Binomial(1, params.percentualFemales/100);
                 if (femaleOrMale.sample(1) == true) {
                     populationProperties[currentPopulation].gender = 'female';
                 } else {
@@ -290,7 +254,7 @@ for (var y = 1; y <= timeSimulated; y++) {
                 }
                 populationProperties[i].pregnancyStatus = 'nonpregnant';
             } else if (populationProperties[i].pregnancyStatus == 'nonpregnant') {
-                var pregnantOrNot = SJS.Binomial(1, probBirth/100);
+                var pregnantOrNot = SJS.Binomial(1, params.probBirth/100);
                 if (pregnantOrNot.sample(1) == true) {
                     populationProperties[i].pregnancyStatus = 'pregnant';
                 }
@@ -374,9 +338,10 @@ function makeDead(index) {
 
 /***********************************************
  * LOOP SIMULATION
-***********************************************/ 
-inputData()
-var timeSimulated = $.query.get('numberYearsSimulated'); 
+***********************************************/
+var params = {}; 
+inputData();
+var timeSimulated = 20;
 var numberSimulation = 50;
 
 var simulationTotalPopulationPerYear = [];
@@ -389,7 +354,6 @@ var simulationShipStrike = [];
 var simulationWhaling = [];
 var simulationStranding = [];
 var simulationOtherThreat = [];
-var simulationAgeProfileLastYear = [];
 for (var i = 0; i <= numberSimulation; i++) {
     SimulationYear ()
     simulationTotalPopulationPerYear[i]=totalPopulationPerYear;
@@ -439,7 +403,8 @@ for (var i = 0; i <= timeSimulated; i++) {
         simulationStrandingAverage[i] += simulationStranding[j][i]/numberSimulation;
         simulationOtherThreatAverage[i] += simulationOtherThreat[j][i]/numberSimulation;
     }
-}
+};
+
 
 var totalPopulationPerSimulation = [];
 var totalPopulationPerSimulationStd = [];

@@ -1,5 +1,6 @@
 /* INPUT DATA OF THE STUDY AREA (BY THE USER) */
 // Extracting the input data from the url
+
 var params = {};
 var getParams = function (url) {
 	var parser = document.createElement('a');
@@ -31,27 +32,7 @@ var currentPopulation = params.initialPopulation;
 //var percentMales = 100-percentJuveniles-percentFemales;
 var ageFemaleSterile = Math.round((params.ageLifeExpectancy - params.ageMaturationMax) * 0.6 + params.ageMaturationMax);
 var yearStartSimulation = 2019;
-var currentYear = yearStartSimulation;  
-
-/* PRINT WHALE PICTURE */
-function checkStorage(){
-    if (localStorage.getItem("speciesSelected") == "Sperm Whale") {
-        document.getElementById("WhaleFig").src = "assets/images/whales/sperm-whale.png";
-    } else  if (localStorage.getItem("speciesSelected") == "Blue Whale") {
-      document.getElementById("WhaleFig").src = "assets/images/whales/blue-whale.png";
-    } else  if (localStorage.getItem("speciesSelected") == "Fin Whale") {
-      document.getElementById("WhaleFig").src = "assets/images/whales/fin-whale.png";
-    } else  if (localStorage.getItem("speciesSelected") == "Right Whale") {
-      document.getElementById("WhaleFig").src = "assets/images/whales/right-whale.png";
-    } else  if (localStorage.getItem("speciesSelected") == "Gray Whale") {
-      document.getElementById("WhaleFig").src = "assets/images/whales/gray-whale.png";
-    } else  if (localStorage.getItem("speciesSelected") == "Humpback Whale") {
-      document.getElementById("WhaleFig").src = "assets/images/whales/humpback-whale.png";
-    } else {
-      document.getElementById("WhaleFig").src = "assets/images/whales/undentifiedwhale.png";
-      localStorage.setItem("speciesSelected", "Alternative Species")
-    }
-};
+var currentYear = yearStartSimulation;
 
 /********************************************************************************************
  * PLOTS CONFIGURATIOIN
@@ -109,13 +90,14 @@ Plotly.plot('input-data', data, layout);
 
 // build x axis with the years range
 var xAxis = [];
-for (x = 0; x <= params.timeSimulated; x++) {                            
+for (x = 0; x <= timeSimulated; x++) {                            
     xAxis[x] = yearStartSimulation + x;
-}
+};
 xAxis[0] = yearStartSimulation;
 
+
 // plot: population increase
-var simulationTotalPopulationPerYearAverageStdMax = {
+var plotOne = {
     x: xAxis,
     y: simulationTotalPopulationPerYearAverageStdMax,
     mode: 'lines',
@@ -125,10 +107,8 @@ var simulationTotalPopulationPerYearAverageStdMax = {
       width: 1,
       color: 'rgb(225,45,45)',
     },
-    fill: 'tonexty',
-    fillcolor: 'rgba(225,45,45,0.3)',
 };
-var simulationTotalPopulationPerYearAverageStdMin = {
+var plotTwo = {
     x: xAxis,
     y: simulationTotalPopulationPerYearAverageStdMin,
     mode: 'lines',
@@ -137,28 +117,31 @@ var simulationTotalPopulationPerYearAverageStdMin = {
       dash: 'dot',
       width: 1,
       color: 'rgb(225,45,45)',
-    }
+    },
+    
+    fill: 'tonexty',
+    fillcolor: 'rgba(225,45,45,0.3)',
 };
-var simulationTotalPopulationPerYearAverage = {
+var plotThree = {
     x: xAxis,
     y: simulationTotalPopulationPerYearAverage,
     type: 'scatter',
     name: 'Total population',
 };
   
-var simulationJuvenilePopulationPerYearAverage = {
+var plotFour = {
     x: xAxis,
     y: simulationJuvenilePopulationPerYearAverage,
     type: 'scatter',
     name: 'Juvenile population'
 };
-var simulationFemalePopulationPerYearAverage = {
+var plotFive = {
     x: xAxis,
     y: simulationFemalePopulationPerYearAverage,
     type: 'scatter',
     name: 'Female population'
 };
-var simulationMalePopulationPerYearAverage = {
+var plotSix = {
     x: xAxis,
     y: simulationMalePopulationPerYearAverage,
     type: 'scatter',
@@ -179,7 +162,7 @@ var layout = {
         mirror: true
     },
 };
-var data = [simulationTotalPopulationPerYearAverage, simulationTotalPopulationPerYearAverageStdMin, simulationTotalPopulationPerYearAverageStdMax, simulationJuvenilePopulationPerYearAverage, simulationFemalePopulationPerYearAverage, simulationMalePopulationPerYearAverage];
+var data = [plotOne, plotTwo, plotThree, plotFour, plotFive, plotSix];
 Plotly.newPlot('plot-population', data, layout);
 
 
@@ -264,45 +247,7 @@ Plotly.newPlot('plot-deaths', data, layout);
 
 
 /********************************************************************************************
- * STATISTICAL CALCULATIONS
-********************************************************************************************/
-/**
-
-
-// plot: age profile
-var ageLastYear = {
-    x: simulationAgeProfileAverage, 
-    name: 'AverageAge',
-    type: 'histogram',
-    xbins: { 
-        size: 5
-    }
-};
-var data = [ageLastYear];
-var layout = {
-    title: 'Age distribution',
-    xaxis: {
-        title: 'Age',
-        showgrid: true,
-        linewidth: 1,
-        mirror: true
-    },
-    yaxis: {
-        title: 'Number of individuals',
-        showgrid: true,
-        linewidth: 1,
-        mirror: true
-    },
-};
-Plotly.newPlot('plot-aging-profile', data, layout);
-
-
-
-
-
-
-
-
+ *
 
 function cdfNormal (x, mean, standardDeviation) {
     return (1-math.erf((mean-x)/(Math.sqrt(2)*standardDeviation)))/2
@@ -319,21 +264,6 @@ for (t = 0; t < math.max(naturalDeathPerYear)*1.15; t++) {
     probabilityNaturalDeath[t]=cdfNormal(t, math.mean(naturalDeathPerYear), math.std(naturalDeathPerYear))*100;
     probabilityNaturalDeathAxis[t] = t;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
