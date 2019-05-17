@@ -11,7 +11,8 @@
 	<meta name="description" content="f">
 	<meta name="keywords" content="Whales, Agent-based Model, Simulation">
 	<meta name="author" content="Diogo Kramel">
-	<title> Results </title>
+  <title> Results </title>
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
 
   <!-- Custom Google fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300,700' rel='stylesheet' type='text/css'>
@@ -140,7 +141,7 @@
   ================================================== -->
   <br><br>
   <section>
-    <div class="project-desc-2 pad-bt-100">
+    <div class="project-desc-2 pad-bt-60">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -152,10 +153,9 @@
             </p>
             <div id="input-data" class="arialblack centerimg" style="width: 60%;"></div>
             <h3 class="bt-0">Species selected</h3>
-            <div class="col-md-12">
-              <p><div id="result" class="arialblack"></div></p>
-              <img src="" id ="WhaleFig" class="centerimg"><script>checkStorage();</script>
-            </div>
+            <p><div id="result" class="arialblack"></div></p>
+            <img src="" id ="WhaleFig" class="centerimg">
+            <script>checkStorage();</script>
             <script type="text/javascript"> 
               var x = "The species selected is the <b><i>" + localStorage.getItem("speciesSelected") +"</i></b>. If you want to edit the input parameters for the <b><i>" + localStorage.getItem("speciesSelected") +"</i></b>, it is possible to return and personalise them in order to meet your study area, or to analyse different scenarios for higher degrees of risk.";
               document.getElementById("result").innerHTML = x; 
@@ -169,15 +169,15 @@
             <div id="plot-population" style="width: 100%;"></div>
             <br>
             <p>
+              This is histogram is a representation of the distribution of the ship strikes and natural deaths observed in the time period simulated.
+            </p>
+            <div id="plot-deaths" style="width: 100%;"></div>
+            <br>
+            <p>
               This plot can help you understand the aging process of the population. 
               In case the happen to be growing older, the feritle will decrease and in a near future population will also decrease.
             </p>
             <div id="plot-aging" style="width: 100%;"></div>
-            <br>
-            <p>
-              This is histogram is a representation of the distribution of the ship strikes and natural deaths observed in the time period simulated.
-            </p>
-            <div id="plot-deaths" style="width: 100%;"></div><br>
             <!--
             <p>A probability density function (PDF), or density of a continuous random variable, is a function, whose value at any given sample (or point) in the sample space (the set of possible values taken by the random variable) can be interpreted as providing a relative likelihood that the value of the random variable would equal that sample. The sum of each individual probability should result in 100%.</p>
             <div id="plot-probability-normal" style="width: 100%;"></div><br>
@@ -192,7 +192,7 @@
   
 
   <section>
-    <div class="container pad-bt-100">
+    <div class="container pad-bt-60">
       <div class="row">
         <div class="col-md-12">
           <a href="input.html" class=" btn btn-recalculate">CHANGE PARAMETERS AND SIMULATE AGAIN</a>

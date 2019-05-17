@@ -228,6 +228,7 @@ var otherThreatPerYear = {
 var data = [shipStrikeDeathPerYear, naturalDeathPerYear, whalingWhalesPerYear, strandingWhalesPerYear, otherThreatPerYear];
 var layout = {
     title: 'Number and cause of deaths per year',
+    autosize: true,
     xaxis: {
         title: 'Year',
         showgrid: true,

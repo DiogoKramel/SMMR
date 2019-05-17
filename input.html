@@ -10,7 +10,8 @@
 	<meta name="description" content="f">
 	<meta name="keywords" content="Whales, Agent-based Model, Simulation">
 	<meta name="author" content="Diogo Kramel">
-	<title> Simulation Input </title>
+  <title> Simulation Input </title>
+  <link rel="shortcut icon" href="assets/images/favicon.ico">
 
 	<!-- Custom Google fonts -->
 	<link href='https://fonts.googleapis.com/css?family=Raleway:400,500,300,700' rel='stylesheet' type='text/css'>
@@ -64,6 +65,13 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
+
+<script>
+// Disable automatic transition for carousel slides
+jQuery(window).load(function() {
+ $('.carousel').carousel('pause');
+});
+</script>
 
 <body>
   
@@ -125,7 +133,7 @@
     </div>
   </section>
 
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div id="carouselExampleControls" class="carousel slide">
       <ol class="carousel-indicators">
         <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -152,7 +160,7 @@
               </div>
               <div class="carousel-caption d-none d-md-block">
                 <button onclick="dataBlueWhale()" id = "btn1" class="btn-whale-selection"> <div id="test1"> Select Blue Whale</div></button>
-                <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+                <button onclick="PlaySound('blue-whale')" class="btn-whale-selection"> Listen</button>
               </div>
             </div>
         </div>
@@ -173,7 +181,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <button onclick="dataFinWhale()" id = "btn3" class="btn-whale-selection"> <div id="test3"> Select Fin Whale</div></button>
-              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              <button onclick="PlaySound('fin-whale')" class="btn-whale-selection"> Listen</button>
             </div>
           </div>
         </div>
@@ -194,7 +202,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <button onclick="dataRightWhale()" id = "btn4" class="btn-whale-selection"> <div id="test4"> Select Right Whale</div></button>
-              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              <button onclick="PlaySound('right-whale')" class="btn-whale-selection"> Listen</button>
             </div>
           </div>    
         </div>
@@ -215,7 +223,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <button onclick="dataHumpbackWhale()" id = "btn5" class="btn-whale-selection"> <div id="test5"> Select Humpback Whale</div></button>
-              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              <button onclick="PlaySound('humpback-whale')" class="btn-whale-selection"> Listen</button>
             </div>
           </div>  
         </div>
@@ -236,7 +244,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <button onclick="dataGrayWhale()" id = "btn6" class="btn-whale-selection"> <div id="test6"> Select Gray Whale</div></button>
-              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              <button onclick="PlaySound('gray-whale')" class="btn-whale-selection"> Listen</button>
             </div>
           </div>
         </div>
@@ -257,7 +265,7 @@
             </div>
             <div class="carousel-caption d-none d-md-block">
               <button onclick="dataSpermWhale()" id = "btn2" class="btn-whale-selection"> <div id="test2"> Select Sperm Whale</div></button>
-              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              <button onclick="PlaySound('sperm-whale')" class="btn-whale-selection"> Listen</button>
             </div>
           </div>
         </div>
