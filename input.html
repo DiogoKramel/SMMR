@@ -32,8 +32,8 @@
 	<link rel="stylesheet" href="assets/css/vegas.min.css">
   <link rel="stylesheet" href="assets/css/morphext.css">
   <link rel="stylesheet" href="assets/css/style_updates.css"> <!-- Updates necessary for input page -->
-
-	<!-- JS libraries and scripts -->
+  
+  <!-- JS libraries and scripts -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap-hover-dropdown.min.js"></script>
@@ -60,6 +60,8 @@
 	<script src="assets/js/jquery.gmaps.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/snippets/inputPage.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 </head>
 
@@ -76,10 +78,10 @@
       <div class="container">
         <div class="collapse navbar-collapse" id="navigation-nav">
           <ul class="nav navbar-nav navbar-right">
-            <li class="active"><a class="section-scroll" href="#wrapper">Home</a></li>
-            <li><a class="section-scroll" href="#about-section">About</a></li>
-            <li><a class="section-scroll" href="#process-section">How it works</a></li>
-            <li><a class="section-scroll" href="#contact-section">Contact</a></li>
+            <li class="active"><a class="section-scroll" href="home.html">Home</a></li>
+            <li><a class="section-scroll" href="home.html#about-section">About</a></li>
+            <li><a class="section-scroll" href="home.html#process-section">How it works</a></li>
+            <li><a class="section-scroll" href="home.html#contact-section">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -105,29 +107,59 @@
   <!-- Species selection -->
   <section>
     <div class="project-desc-2 pad-bt-60"></div>
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="bt-0">First, select one of the species below</h3>
-          <p>The simulation starts by selecting one species among the options below. The data will be automatically updated to the input section below, and can be edited, if necessary. The species characterisation is based on the book <i><a style = " white-space:nowrap; " href="http://www.fao.org/docrep/009/t0725e/t0725e00.htm">Marine Mammals of the World</a></i>, by Jefferson A. Thomas, Stephen Leatherwood, and Marc A. Webber, published by FAO in 1993; the book <i><a style = " white-space:nowrap; " href="https://books.google.it/books?hl=en&lr=&id=vPLpBwAAQBAJ&oi=fnd&pg=PA1&dq=Marine+Mammals+Biology+and+Conservation&ots=13RBri_AH6&sig=ypsy4ZWgsdlBDGFf0zXDPea6Md4#v=onepage&q=Marine%20Mammals%20Biology%20and%20Conservation&f=false">Marine Mammals: Biology and Conservation</a></i>, by Peter G. H. Evans and Juan Antonio Raga, published by Springer in 2012; and the <i><a style = " white-space:nowrap; " href="https://books.google.it/books?hl=en&lr=&id=2rkHQpToi9sC&oi=fnd&pg=PP1&dq=Encyclopedia+of+marine+mammals&ots=hFiBJw7dut&sig=Z74utxSg1gQ3_spaeIb29wtD0lI#v=onepage&q=Encyclopedia%20of%20marine%20mammals&f=false">Encyclopedia of Marine Mammals</a></i>, by William F. Perrin, Bernd Würsig, and J. G. M. Thewissen, published by Academic Press in 2009.</p>
-          <div class="col-md-6">
-            <div class="container">
-              <img src="assets/images/whales/blue-whale.png" alt="BlueWhale" class="image" style="width: 80%;">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Balaenoptera musculus</i></b><br>
-                  Life expectancy: 80-90 years<br>
-                  Sexual maturation: 5-10 years old<br> 
-                  Gestation: 10-12 months <br> 
-                  Birth: every 2-3 years
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="bt-0">First, select one of the species below</h3>
+            <p>The simulation starts by selecting one species among the options below. The data will be automatically updated
+              to the input section below, and can be edited, if necessary. The species characterisation is based on the book 
+              <i><a style = " white-space:nowrap; " href="http://www.fao.org/docrep/009/t0725e/t0725e00.htm">Marine Mammals of
+                the World</a></i>, by Jefferson A. Thomas, Stephen Leatherwood, and Marc A. Webber, published by FAO in 1993; 
+                the book <i><a style = " white-space:nowrap; " href="https://books.google.it/books?hl=en&lr=&id=vPLpBwAAQBAJ&oi=fnd&pg=PA1&dq=Marine+Mammals+Biology+and+Conservation&ots=13RBri_AH6&sig=ypsy4ZWgsdlBDGFf0zXDPea6Md4#v=onepage&q=Marine%20Mammals%20Biology%20and%20Conservation&f=false">
+                Marine Mammals: Biology and Conservation</a></i>, by Peter G. H. Evans and Juan Antonio Raga, published by Springer in 2012;
+                and the <i><a style = " white-space:nowrap; " href="https://books.google.it/books?hl=en&lr=&id=2rkHQpToi9sC&oi=fnd&pg=PP1&dq=Encyclopedia+of+marine+mammals&ots=hFiBJw7dut&sig=Z74utxSg1gQ3_spaeIb29wtD0lI#v=onepage&q=Encyclopedia%20of%20marine%20mammals&f=false">
+                Encyclopedia of Marine Mammals</a></i>, by William F. Perrin, Bernd Würsig, and J. G. M. Thewissen, published by Academic Press in 2009.</p>
+          </div> 
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="col-md-12">
+              <div class="container">
+                <img src="assets/images/whales/blue-whale.png" alt="BlueWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                <div class="middle">
+                  <div class="text">
+                    <b><i>Balaenoptera musculus</i></b><br>
+                    Life expectancy: 80-90 years<br>
+                    Sexual maturation: 5-10 years old<br> 
+                    Gestation: 10-12 months <br> 
+                    Birth: every 2-3 years
+                  </div>
                 </div>
               </div>
+              <div class="carousel-caption d-none d-md-block">
+                <button onclick="dataBlueWhale()" id = "btn1" class="btn-whale-selection"> <div id="test1"> Select Blue Whale</div></button>
+                <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+              </div>
             </div>
-            <button onclick="dataBlueWhale()" id = "btn1" class="btn-whale-selection"> <div id="test1"> Blue Whale</div></button>
-            <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
-          </div>
-          <div class="col-md-6">
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <img src="assets/images/whales/fin-whale.png" alt="FinWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/fin-whale.png" alt="FinWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Balaenoptera physalus</i></b><br>
@@ -139,12 +171,16 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataFinWhale()" id = "btn3" class="btn-whale-selection"> <div id="test3"> Fin Whale</div></button>
-            <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataFinWhale()" id = "btn3" class="btn-whale-selection"> <div id="test3"> Select Fin Whale</div></button>
+              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            </div>
           </div>
-          <div class="col-md-6">
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <img src="assets/images/whales/right-whale.png" alt="RightWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/right-whale.png" alt="RightWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Eubalaena glacialis</i></b><br>
@@ -156,11 +192,16 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataRightWhale()" id = "btn4" class="btn-whale-selection"> <div id="test4"> Right Whale</div></button>
-          </div>      
-          <div class="col-md-6">
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataRightWhale()" id = "btn4" class="btn-whale-selection"> <div id="test4"> Select Right Whale</div></button>
+              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            </div>
+          </div>    
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <img src="assets/images/whales/humpback-whale.png" alt="HumpbackWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/humpback-whale.png" alt="HumpbackWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Megaptera novaeangliae</i></b><br>
@@ -172,11 +213,16 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataHumpbackWhale()" id = "btn5" class="btn-whale-selection"> <div id="test5"> Humpback Whale</div></button>
-          </div>   
-          <div class="col-md-6">
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataHumpbackWhale()" id = "btn5" class="btn-whale-selection"> <div id="test5"> Select Humpback Whale</div></button>
+              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            </div>
+          </div>  
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <img src="assets/images/whales/gray-whale.png" alt="GrayWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/gray-whale.png" alt="GrayWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Eschrichtius robustus</i></b><br>
@@ -188,11 +234,16 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataGrayWhale()" id = "btn6" class="btn-whale-selection"> <div id="test6"> Gray Whale</div></button>
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataGrayWhale()" id = "btn6" class="btn-whale-selection"> <div id="test6"> Select Gray Whale</div></button>
+              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            </div>
           </div>
-          <div class="col-md-6">
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <img src="assets/images/whales/sperm-whale.png" alt="SpermWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/sperm-whale.png" alt="SpermWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Physeter macrocephalu</i></b><br>
@@ -204,12 +255,16 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataSpermWhale()" id = "btn2" class="btn-whale-selection"> <div id="test2"> Sperm Whale</div></button>
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataSpermWhale()" id = "btn2" class="btn-whale-selection"> <div id="test2"> Select Sperm Whale</div></button>
+              <button onclick="PlaySound('Whale2')" class="btn-whale-selection"> Listen</button>
+            </div>
           </div>
-          <div class="col-md-6">
+        </div>
+        <div class="carousel-item">
+          <div class="col-md-12">
             <div class="container">
-              <br><br><br>
-              <img src="assets/images/whales/undentifiedwhale.png" alt="AlternativeWhale" class="image" style="width: 80%;">
+              <img src="assets/images/whales/fin-whale.png" alt="AlternativeWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
               <div class="middle">
                 <div class="text">
                   <b><i>Alternative species</i></b><br>
@@ -220,144 +275,155 @@
                 </div>
               </div>
             </div>
-            <button onclick="dataAlternativeWhale()" id = "btn7" class="btn-whale-selection"> <div id="test7"> Alternative species</div></button>
+            <div class="carousel-caption d-none d-md-block">
+              <button onclick="dataAlternativeWhale()" id = "btn7" class="btn-whale-selection"> <div id="test7"> Alternative species</div></button>
+            </div>
           </div>
-        </div> 
+        </div>
       </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
-  </section>
     
   <!-- Simulation configuration -->
   <br><br>
   <section>
     <div class="project-desc-2 pad-bt-60">
-      <div class="row">
-        <div class="col-md-12">
-          <h3 class="bt-0">NOW YOU CAN SPECIFY MORE DETAILS FOR YOUR STUDY AREA</h3>
-          <p>Please insert the data for the four categories: species, study area, simulation and anthropogenic acitivities. 
-            Remember that the species section was automatically filled while chosing the species before. 
-            All of them have default values to ease the process. For more information, you can explore the information button. 
-            You will be able to return and change the inputs once you finished the simulation.</p>
-          <br>
-          <div class="formmargin">
-            <form action="output.html" method="GET">
-              <fieldset>
-                <legend><span style="color:#F15F40">Species</span></legend>
-                <div class="col-md-12">
-                <div>Life expectancy:
-                  <input type="text" name="ageLifeExpectancy" id="ageLifeExpectancy" value="60" size="6" style="text-align:center"> years  
-                  <div class="popup" onclick="myFunction1()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup1">Value of the average life expectancy. The algorithm uses a normal distribution around this value with standard deviation of 10 percent.</span>
-                  </div>
-                </div></p>
-                <div>Age maturation: between
-                  <input type="text" name="ageMaturationMin" id="ageMaturationMin" value="8" size="6" style="text-align:center"> and 
-                  <input type="text" name="ageMaturationMax" id="ageMaturationMax" value="10" size="6" style="text-align:center"> years  
-                  <div class="popup" onclick="myFunction2()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup2">Interval of age maturation. The juvenile individuals become adults between these ages following a normal distribution.</span>
-                  </div>
-                </div></p>
-                <div>Probability of birth: 
-                  <input type="text" name="probBirth" id="probBirth" value="70" size="6" style="text-align:center"> %  
-                  <div class="popup" onclick="myFunction6()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup6">The probability of a female having an offspring in the following year by a binomial distribution. It is applied only to females that are not pregnant, resting after pregnancy, or sterile. </span>
-                  </div>
-                </div></p>
-                <div>Probability of survival for adults: 
-                  <input type="tex" name="probSurvivalAdults" value="96" size="6" style="text-align:center"> %   
-                  <div class="popup" onclick="myFunction4()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup4">Probability of surviving for adult individuals determined by a binomial distribution.</span>
-                  </div>
-                </div></p> 
-                <div>Probability of survival for juveniles: 
-                  <input type="text" name="probSurvivalJuveniles" value="93" size="6" style="text-align:center"> %  
-                  <div class="popup" onclick="myFunction5()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It is, in general, lower than the probability for adults.</span>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend><span style="color:#F15F40">Study area</span></legend>
-                <div class="col-md-12">
-                  <div>Initial population:
-                    <input type="text" name="initialPopulation" value="50" size="6" style="text-align:center"> individuals
-                  </div></p>
-                  <div>Percentage of juveniles:
-                    <input type="text" name="percentualJuveniles" value="40" size="6" style="text-align:center"> % of juveniles
-                    <div class="popup" onclick="myFunction15()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup15">The percentage of females and males are equally divided in the remaining percentage.</span>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="bt-0">NOW YOU CAN SPECIFY MORE DETAILS FOR YOUR STUDY AREA</h3>
+            <p>Please insert the data for the four categories: species, study area, simulation and anthropogenic acitivities. 
+              Remember that the species section was automatically filled while chosing the species before. 
+              All of them have default values to ease the process. For more information, you can explore the information button. 
+              You will be able to return and change the inputs once you finished the simulation.</p>
+            <br>
+            <div class="formmargin">
+              <form action="output.html" method="GET">
+                <fieldset>
+                  <legend><span style="color:#F15F40">Species</span></legend>
+                  <div class="col-md-12">
+                  <div>Life expectancy:
+                    <input type="text" name="ageLifeExpectancy" id="ageLifeExpectancy" value="60" size="6" style="text-align:center"> years  
+                    <div class="popup" onclick="myFunction1()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup1">Value of the average life expectancy. The algorithm uses a normal distribution around this value with standard deviation of 10 percent.</span>
                     </div>
                   </div></p>
-                  <div>Percentage of females:
-                    <input type="text" name="percentualFemales" value="50" size="6" style="text-align:center"> % of females
+                  <div>Age maturation: between
+                    <input type="text" name="ageMaturationMin" id="ageMaturationMin" value="8" size="6" style="text-align:center"> and 
+                    <input type="text" name="ageMaturationMax" id="ageMaturationMax" value="10" size="6" style="text-align:center"> years  
+                    <div class="popup" onclick="myFunction2()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup2">Interval of age maturation. The juvenile individuals become adults between these ages following a normal distribution.</span>
+                    </div>
                   </div></p>
-                  <div>Number of ships crossing the study area at the first year:
-                    <input type="text" name="numberShipsInitial" value="250" size="6" style="text-align:center" > ships
+                  <div>Probability of birth: 
+                    <input type="text" name="probBirth" id="probBirth" value="70" size="6" style="text-align:center"> %  
+                    <div class="popup" onclick="myFunction6()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup6">The probability of a female having an offspring in the following year by a binomial distribution. It is applied only to females that are not pregnant, resting after pregnancy, or sterile. </span>
+                    </div>
                   </div></p>
-                  <div>Number of ships crossing the study area at the last year:
-                    <input type="text" name="numberShipsExpectedFinal" value="300" size="6" style="text-align:center"> ships 
-                    <div class="popup" onclick="myFunction7()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup7"> It can be higher, equal or lower than the initial number of ships </span>
+                  <div>Probability of survival for adults: 
+                    <input type="tex" name="probSurvivalAdults" value="96" size="6" style="text-align:center"> %   
+                    <div class="popup" onclick="myFunction4()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup4">Probability of surviving for adult individuals determined by a binomial distribution.</span>
+                    </div>
+                  </div></p> 
+                  <div>Probability of survival for juveniles: 
+                    <input type="text" name="probSurvivalJuveniles" value="93" size="6" style="text-align:center"> %  
+                    <div class="popup" onclick="myFunction5()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It is, in general, lower than the probability for adults.</span>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend><span style="color:#F15F40">Simulation</span></legend>
-                <div class="col-md-12">
-                  <div>Time simulated:
-                    <input type="text" name="numberYearsSimulated" value="60" size="6" style="text-align:center"> years
-                  </div></p>
-                  <div>Number of simulations:
-                    <input type="text" name="numberSimulations" value="100" size="6" style="text-align:center"> simulations 
-                    <div class="popup" onclick="myFunction8()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup8">IMPORTANT: MOMENTANEOUSLY DEACTIVATED. How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
+                </fieldset>
+                <fieldset>
+                  <legend><span style="color:#F15F40">Study area</span></legend>
+                  <div class="col-md-12">
+                    <div>Initial population:
+                      <input type="text" name="initialPopulation" value="50" size="6" style="text-align:center"> individuals
+                    </div></p>
+                    <div>Percentage of juveniles:
+                      <input type="text" name="percentualJuveniles" value="40" size="6" style="text-align:center"> % of juveniles
+                      <div class="popup" onclick="myFunction15()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup15">The percentage of females and males are equally divided in the remaining percentage.</span>
+                      </div>
+                    </div></p>
+                    <div>Percentage of females:
+                      <input type="text" name="percentualFemales" value="50" size="6" style="text-align:center"> % of females
+                    </div></p>
+                    <div>Number of ships crossing the study area at the first year:
+                      <input type="text" name="numberShipsInitial" value="250" size="6" style="text-align:center" > ships
+                    </div></p>
+                    <div>Number of ships crossing the study area at the last year:
+                      <input type="text" name="numberShipsExpectedFinal" value="300" size="6" style="text-align:center"> ships 
+                      <div class="popup" onclick="myFunction7()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup7"> It can be higher, equal or lower than the initial number of ships </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-              <fieldset>
-                <legend><span style="color:#F15F40">Anthropogenic Threats</span></legend>
-                <div class="col-md-12">
-                  <div>Ship strike ratio:
-                    <input type="text" name="strikeRateYear" value="0.35" size="8" style="text-align:center">
-                    <input type="radio" name="strikeType" value="perYear" checked> strikes per year
-                    <input type="radio" name="strikeType" value="perShip"> ships per strike 
-                    <div class="popup" onclick="myFunction9()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup9">The data can be based on a year basis or ship basis. It is recommended to use a ratio based on data or estimations from the study area. Also, it is strongly recommended to use the ship basis when the amount of ships increase over time. Values do not need to be round.</span>
-                    </div>
-                  </div></p>
-                  <div>Category of individuals affecteded by ship strikes:
-                    <div class="popup" onclick="myFunction10()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                    <span class="popuptext" id="myPopup10">An worst case scenario can be predicted by selecting the most sensitive class of the population, in this case females or juveniles.</span>
-                  </div><br>
-                    <input type="radio" name="gender" value="1" checked> Random<br>
-                    <input type="radio" name="gender" value="2"> Female<br>
-                    <input type="radio" name="gender" value="3"> Juveniles
-                  </div></p>
-                  <div>Whaling or Bycatch:
-                    <input type="text" name="whalingRateYear" value="0" size="6" style="text-align:center"> whales fished per years 
-                    <div class="popup" onclick="myFunction11()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume uneven values.</span>
-                    </div>
-                  </div></p>
-                  <div>Stranding or beaching:
-                    <input type="text" name="strandingRateYear" value="0" size="6" style="text-align:center"> whales found on the beach per year 
-                    <div class="popup" onclick="myFunction12()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume uneven values.</span>
-                    </div>
-                  </div></p>
-                  <div>Other threats:
-                    <input type="text" name="otherRateYear" value="0" size="6" style="text-align:center"> whales extracted per year 
-                    <div class="popup" onclick="myFunction13()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup13">In case the study area faces a threat that was not predicted, the amount of individuals to affected and removed each year can be inserted here. It can assume uneven values.</span>
+                </fieldset>
+                <fieldset>
+                  <legend><span style="color:#F15F40">Simulation</span></legend>
+                  <div class="col-md-12">
+                    <div>Time simulated:
+                      <input type="text" name="numberYearsSimulated" value="60" size="6" style="text-align:center"> years
+                    </div></p>
+                    <div>Number of simulations:
+                      <input type="text" name="numberSimulations" value="100" size="6" style="text-align:center"> simulations 
+                      <div class="popup" onclick="myFunction8()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup8">IMPORTANT: MOMENTANEOUSLY DEACTIVATED. How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-              <br><br>
-              <input type="submit" class="submit" value="SIMULATE">
-            </form>
+                </fieldset>
+                <fieldset>
+                  <legend><span style="color:#F15F40">Anthropogenic Threats</span></legend>
+                  <div class="col-md-12">
+                    <div>Ship strike ratio:
+                      <input type="text" name="strikeRateYear" value="0.35" size="8" style="text-align:center">
+                      <input type="radio" name="strikeType" value="perYear" checked> strikes per year
+                      <input type="radio" name="strikeType" value="perShip"> ships per strike 
+                      <div class="popup" onclick="myFunction9()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup9">The data can be based on a year basis or ship basis. It is recommended to use a ratio based on data or estimations from the study area. Also, it is strongly recommended to use the ship basis when the amount of ships increase over time. Values do not need to be round.</span>
+                      </div>
+                    </div></p>
+                    <div>Category of individuals affecteded by ship strikes:
+                      <div class="popup" onclick="myFunction10()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup10">An worst case scenario can be predicted by selecting the most sensitive class of the population, in this case females or juveniles.</span>
+                    </div><br>
+                      <input type="radio" name="gender" value="1" checked> Random<br>
+                      <input type="radio" name="gender" value="2"> Female<br>
+                      <input type="radio" name="gender" value="3"> Juveniles
+                    </div></p>
+                    <div>Whaling or Bycatch:
+                      <input type="text" name="whalingRateYear" value="0" size="6" style="text-align:center"> whales fished per years 
+                      <div class="popup" onclick="myFunction11()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume uneven values.</span>
+                      </div>
+                    </div></p>
+                    <div>Stranding or beaching:
+                      <input type="text" name="strandingRateYear" value="0" size="6" style="text-align:center"> whales found on the beach per year 
+                      <div class="popup" onclick="myFunction12()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume uneven values.</span>
+                      </div>
+                    </div></p>
+                    <div>Other threats:
+                      <input type="text" name="otherRateYear" value="0" size="6" style="text-align:center"> whales extracted per year 
+                      <div class="popup" onclick="myFunction13()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                        <span class="popuptext" id="myPopup13">In case the study area faces a threat that was not predicted, the amount of individuals to affected and removed each year can be inserted here. It can assume uneven values.</span>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <br><br>
+                <input type="submit" class="submit" value="SIMULATE">
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -368,7 +434,7 @@
   <footer>
     <div class="container">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12" style="text-align:center">
           <p>Diogo Kramel @2018. All Rights Reserved.</p>
         </div>
       </div>     

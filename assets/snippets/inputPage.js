@@ -7,12 +7,12 @@ function PlaySound(melody) {
 $(document).ready(function(){
     $("#btn1").click(function(){
       $("#test1").text("BLUE WHALE SELECTED");
-      $("#test2").text("SPERM WHALE");
-      $("#test3").text("FIN WHALE");
-      $("#test4").text("RIGHT WHALE");
-      $("#test5").text("HUMPBACK WHALE");
-      $("#test6").text("GRAY WHALE");
-      $("#test6").text("ALTERNATIVE WHALE");
+      $("#test2").text("Select Sperm Whale");
+      $("#test3").text("SELECT FIN WHALE");
+      $("#test4").text("SELECT RIGHT WHALE");
+      $("#test5").text("SELECT HUMPBACK WHALE");
+      $("#test6").text("SELECT GRAY WHALE");
+      $("#test6").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").addClass('button-clicked-whale');
       $("#btn2").removeClass("button-clicked-whale");
       $("#btn3").removeClass("button-clicked-whale");
@@ -25,13 +25,13 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#btn2").click(function(){
-      $("#test1").text("BLUE WHALE");
+      $("#test1").text("SELECT BLUE WHALE");
       $("#test2").text("SPERM WHALE SELECTED");
-      $("#test3").text("FIN WHALE");
-      $("#test4").text("RIGHT WHALE");
-      $("#test5").text("HUMPBACK WHALE");
-      $("#test6").text("GRAY WHALE");
-      $("#test7").text("ALTERNATIVE WHALE");
+      $("#test3").text("SELECT FIN WHALE");
+      $("#test4").text("SELECT RIGHT WHALE");
+      $("#test5").text("SELECT HUMPBACK WHALE");
+      $("#test6").text("SELECT GRAY WHALE");
+      $("#test7").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").removeClass("button-clicked-whale");
       $("#btn2").addClass("button-clicked-whale");
       $("#btn3").removeClass("button-clicked-whale");
@@ -44,13 +44,13 @@ $(document).ready(function(){
   
 $(document).ready(function(){
     $("#btn3").click(function(){
-      $("#test1").text("BLUE WHALE");
-      $("#test2").text("SPERM WHALE");
+      $("#test1").text("SELECT BLUE WHALE");
+      $("#test2").text("Select Sperm Whale");
       $("#test3").text("FIN WHALE SELECTED");
-      $("#test4").text("RIGHT WHALE");
-      $("#test5").text("HUMPBACK WHALE");
-      $("#test6").text("GRAY WHALE");
-      $("#test7").text("ALTERNATIVE WHALE");
+      $("#test4").text("SELECT RIGHT WHALE");
+      $("#test5").text("SELECT HUMPBACK WHALE");
+      $("#test6").text("SELECT GRAY WHALE");
+      $("#test7").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").removeClass('button-clicked-whale');
       $("#btn2").removeClass('button-clicked-whale');
       $("#btn3").addClass('button-clicked-whale');
@@ -63,13 +63,13 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#btn4").click(function(){
-      $("#test1").text("BLUE WHALE");
-      $("#test2").text("SPERM WHALE");
-      $("#test3").text("FIN WHALE");
+      $("#test1").text("SELECT BLUE WHALE");
+      $("#test2").text("Select Sperm Whale");
+      $("#test3").text("SELECT FIN WHALE");
       $("#test4").text("RIGHT WHALE SELECTED");
-      $("#test5").text("HUMPBACK WHALE");
-      $("#test6").text("GRAY WHALE");
-      $("#test7").text("ALTERNATIVE WHALE");
+      $("#test5").text("SELECT HUMPBACK WHALE");
+      $("#test6").text("SELECT GRAY WHALE");
+      $("#test7").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").removeClass('button-clicked-whale');
       $("#btn2").removeClass('button-clicked-whale');
       $("#btn3").removeClass('button-clicked-whale');
@@ -82,13 +82,13 @@ $(document).ready(function(){
 
 $(document).ready(function(){
     $("#btn5").click(function(){
-      $("#test1").text("BLUE WHALE");
-      $("#test2").text("SPERM WHALE");
-      $("#test3").text("FIN WHALE");
-      $("#test4").text("RIGHT WHALE");
+      $("#test1").text("SELECT BLUE WHALE");
+      $("#test2").text("Select Sperm Whale");
+      $("#test3").text("SELECT FIN WHALE");
+      $("#test4").text("SELECT RIGHT WHALE");
       $("#test5").text("HUMPBACK WHALE SELECTED");
-      $("#test6").text("GRAY WHALE");
-      $("#test7").text("ALTERNATIVE WHALE");
+      $("#test6").text("SELECT GRAY WHALE");
+      $("#test7").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").removeClass('button-clicked-whale');
       $("#btn2").removeClass('button-clicked-whale');
       $("#btn3").removeClass('button-clicked-whale');
@@ -101,13 +101,13 @@ $(document).ready(function(){
 
  $(document).ready(function(){
     $("#btn6").click(function(){
-      $("#test1").text("BLUE WHALE");
-      $("#test2").text("SPERM WHALE");
-      $("#test3").text("FIN WHALE");
-      $("#test4").text("RIGHT WHALE");
-      $("#test5").text("HUMPBACK WHALE");
+      $("#test1").text("SELECT BLUE WHALE");
+      $("#test2").text("Select Sperm Whale");
+      $("#test3").text("SELECT FIN WHALE");
+      $("#test4").text("SELECT RIGHT WHALE");
+      $("#test5").text("SELECT HUMPBACK WHALE");
       $("#test6").text("GRAY WHALE SELECTED");
-      $("#test7").text("ALTERNATIVE WHALE");
+      $("#test7").text("SELECT ALTERNATIVE WHALE");
       $("#btn1").removeClass('button-clicked-whale');
       $("#btn2").removeClass('button-clicked-whale');
       $("#btn3").removeClass('button-clicked-whale');
@@ -120,12 +120,12 @@ $(document).ready(function(){
 
 $(document).ready(function(){
   $("#btn7").click(function(){
-    $("#test1").text("BLUE WHALE");
-    $("#test2").text("SPERM WHALE");
-    $("#test3").text("FIN WHALE");
-    $("#test4").text("RIGHT WHALE");
-    $("#test5").text("HUMPBACK WHALE");
-    $("#test6").text("GRAY WHALE");
+    $("#test1").text("SELECT BLUE WHALE");
+    $("#test2").text("Select Sperm Whale");
+    $("#test3").text("SELECT FIN WHALE");
+    $("#test4").text("SELECT RIGHT WHALE");
+    $("#test5").text("SELECT HUMPBACK WHALE");
+    $("#test6").text("SELECT GRAY WHALE");
     $("#test7").text("ALTERNATIVE WHALE SELECTED");
     $("#btn1").removeClass('button-clicked-whale');
     $("#btn2").removeClass('button-clicked-whale');
