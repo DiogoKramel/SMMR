@@ -32,6 +32,7 @@
 	<link rel="stylesheet" href="assets/css/superslides.css">
 	<link rel="stylesheet" href="assets/css/vegas.min.css">
 	<link rel="stylesheet" href="assets/css/morphext.css">
+	<link rel="stylesheet" href="assets/css/">
 
 	<!-- JS libraries and scripts -->
 	<script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -132,8 +133,8 @@
 	</section>
 
 	<!-- Process-section -->
-  <section>
-    <div id="process-section" class="pad-sec-60">
+  	<section>
+		<div id="process-section" class="pad-sec-60">
 			<div class="container">
 				<div class="title-section pad-bt-80">
 					<div class="row">
@@ -220,17 +221,66 @@
 									</div>
 								</div> 
 							</div>
-            </div> 
-          </div> 
-        </div>
-      </div> 
-    </div>
-  </section>
+						</div> 
+					</div> 
+				</div>
+			</div> 
+		</div>
+  	</section>
 
-  <!-- Promo -->
-  <div class="promo-section grey-bg pad-sec-40">
-    <div class="container">
-      <div class="row">
+	<!-- Flowchart 
+	https://mermaidjs.github.io/flowchart.html -->
+  	<section>
+		<div id="process-section" class="pad-sec-40">
+			<div class="container">
+				<div class="title-section pad-bt-40">
+					<div class="row">
+						<div class="col-sm-6">
+							<h2>FLOWCHART</h2>
+							<div class="divider"></div>
+							<div class="mermaid">
+								graph TD
+								A["Start"]
+								A-->B("Input data")
+								B-->C(Study area);
+								B-->D(Species Data);
+								B-->E(Simulation);
+								B-->F(Anthropogenic Activities);
+								C-->G(Create initial population);
+								D-->G;
+								E-->G;
+								F-->G;
+								G-->H(Females give birth and get pregnant);
+								H-->I(Natural Deaths);
+								I-->J(Ship strikes removal);
+								J-->K(Other threats deaths);
+								K-->L{Decision}
+								L-- Add one year more -->H
+								L-- Time period reached -->M{Decision}
+								M-- Add one more loop -->G
+								M-- Loop is over -->N(Calculate averages)
+								N-->O(Population size)
+								N-->P(Average age)
+								N-->Q(Deaths)
+								P-->R[End]
+								O-->R
+								Q-->R
+								classDef changeColor fill:#e4e8ec, stroke:#838383;
+								class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R changeColor;
+							</div>
+							<script src="assets/js/mermaid.min.js"></script>
+							<script>mermaid.initialize({startOnLoad:true});</script>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+  	<!-- Promo -->
+  	<div class="promo-section grey-bg pad-sec-40">
+   		<div class="container">
+      		<div class="row">
 				<div class="col-md-8">
 					<div class="promo-text">
 						<h4 class="promo-title">Do you want to know more?</h4>
@@ -240,10 +290,10 @@
 				<div class="col-md-4">
 					<div class="promo-action">
 						<a href="#contact-section" class="section-scroll btn btn-lg btn-primary">Download manual</a>
-          </div>
-        </div>
-      </div>
-    </div>
+          			</div>
+        		</div>
+      		</div>
+    	</div>
 	</div>
 	<br><br>
       
