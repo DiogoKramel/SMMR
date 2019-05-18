@@ -355,7 +355,7 @@ var simulationWhaling = [];
 var simulationStranding = [];
 var simulationOtherThreat = [];
 for (var i = 0; i <= numberSimulation; i++) {
-    SimulationYear ()
+    SimulationYear();
     simulationTotalPopulationPerYear[i]=totalPopulationPerYear;
     simulationJuvenilePopulationPerYear[i]=juvenilePopulationPerYearGlobal;
     simulationFemalePopulationPerYear[i]=adultFemalePopulationPerYearGlobal;
