@@ -29,8 +29,8 @@ function inputData() {
     initialPopulationFemales = Math.ceil((params.initialPopulation - initialPopulationJuveniles) * params.percentualFemales / 100);
     initialPopulationMales = params.initialPopulation - initialPopulationJuveniles - initialPopulationFemales;
     var numberShips = [];
-    for (i = 0; i <= params.timeSimulated; i++) {
-        numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.timeSimulated + params.numberShipsInitial)
+    for (i = 0; i <= params.numberYearsSimulated; i++) {
+        numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.numberYearsSimulated + params.numberShipsInitial)
     }
     currentPopulation = params.initialPopulation;
     //var percentFemales = (100-percentJuveniles)/2;
@@ -104,7 +104,7 @@ for (var i = 1; i <= params.initialPopulation; i++) {
 /********************************************************************************************
  * LOOP FOR EVERY YEAR
 ********************************************************************************************/
-for (var y = 1; y <= timeSimulated; y++) {
+for (var y = 1; y <= params.numberYearsSimulated; y++) {
     // add one year to the simulation and one year for each agent's age
     currentYear +=1;
     for (var i = 1; i <= currentPopulation; i++) {
@@ -313,7 +313,6 @@ window.strandingWhales = strandingWhalesPerYear;
 window.otherThreat = otherThreatPerYear;
 
 
-
 /********************************************************************************************
  * FUNCTIONS IMPLEMENTED
 ********************************************************************************************/
@@ -341,8 +340,6 @@ function makeDead(index) {
 ***********************************************/
 var params = {}; 
 inputData();
-var timeSimulated = 20;
-var numberSimulation = 50;
 
 var simulationTotalPopulationPerYear = [];
 var simulationJuvenilePopulationPerYear = [];
@@ -354,7 +351,7 @@ var simulationShipStrike = [];
 var simulationWhaling = [];
 var simulationStranding = [];
 var simulationOtherThreat = [];
-for (var i = 0; i <= numberSimulation; i++) {
+for (var i = 0; i <= params.numberSimulations; i++) {
     SimulationYear();
     simulationTotalPopulationPerYear[i]=totalPopulationPerYear;
     simulationJuvenilePopulationPerYear[i]=juvenilePopulationPerYearGlobal;
@@ -380,7 +377,7 @@ var simulationShipStrikeAverage = [];
 var simulationWhalingAverage = [];
 var simulationStrandingAverage = [];
 var simulationOtherThreatAverage = [];
-for (var i = 0; i <= timeSimulated; i++) {
+for (var i = 0; i <= params.numberYearsSimulated; i++) {
     simulationTotalPopulationPerYearAverage[i] = 0;
     simulationJuvenilePopulationPerYearAverage[i] = 0;
     simulationFemalePopulationPerYearAverage[i] = 0;
@@ -391,17 +388,17 @@ for (var i = 0; i <= timeSimulated; i++) {
     simulationWhalingAverage[i] = 0;
     simulationStrandingAverage[i] = 0;
     simulationOtherThreatAverage[i] = 0;
-    for (var j = 0; j < numberSimulation; j++) {
-        simulationTotalPopulationPerYearAverage[i] += simulationTotalPopulationPerYear[j][i]/numberSimulation;
-        simulationJuvenilePopulationPerYearAverage[i] += simulationJuvenilePopulationPerYear[j][i]/numberSimulation;
-        simulationFemalePopulationPerYearAverage[i] += simulationFemalePopulationPerYear[j][i]/numberSimulation;
-        simulationMalePopulationPerYearAverage[i] += simulationMalePopulationPerYear[j][i]/numberSimulation;
-        simulationAgingPopulationAverage[i] += simulationAgingPopulation[j][i]/numberSimulation;
-        simulationNaturalDeathAverage[i] += simulationNaturalDeath[j][i]/numberSimulation;
-        simulationShipStrikeAverage[i] += simulationShipStrike[j][i]/numberSimulation;
-        simulationWhalingAverage[i] += simulationWhaling[j][i]/numberSimulation;
-        simulationStrandingAverage[i] += simulationStranding[j][i]/numberSimulation;
-        simulationOtherThreatAverage[i] += simulationOtherThreat[j][i]/numberSimulation;
+    for (var j = 0; j < params.numberSimulations; j++) {
+        simulationTotalPopulationPerYearAverage[i] += simulationTotalPopulationPerYear[j][i]/params.numberSimulations;
+        simulationJuvenilePopulationPerYearAverage[i] += simulationJuvenilePopulationPerYear[j][i]/params.numberSimulations;
+        simulationFemalePopulationPerYearAverage[i] += simulationFemalePopulationPerYear[j][i]/params.numberSimulations;
+        simulationMalePopulationPerYearAverage[i] += simulationMalePopulationPerYear[j][i]/params.numberSimulations;
+        simulationAgingPopulationAverage[i] += simulationAgingPopulation[j][i]/params.numberSimulations;
+        simulationNaturalDeathAverage[i] += simulationNaturalDeath[j][i]/params.numberSimulations;
+        simulationShipStrikeAverage[i] += simulationShipStrike[j][i]/params.numberSimulations;
+        simulationWhalingAverage[i] += simulationWhaling[j][i]/params.numberSimulations;
+        simulationStrandingAverage[i] += simulationStranding[j][i]/params.numberSimulations;
+        simulationOtherThreatAverage[i] += simulationOtherThreat[j][i]/params.numberSimulations;
     }
 };
 
@@ -410,9 +407,9 @@ var totalPopulationPerSimulation = [];
 var totalPopulationPerSimulationStd = [];
 var simulationTotalPopulationPerYearAverageStdMax = [];
 var simulationTotalPopulationPerYearAverageStdMin = [];
-for (var i = 0; i <= timeSimulated; i++) {
+for (var i = 0; i <= params.numberYearsSimulated; i++) {
     totalPopulationPerSimulation[i] = [];
-    for (var j = 0; j < numberSimulation; j++) {
+    for (var j = 0; j < params.numberSimulations; j++) {
         totalPopulationPerSimulation[i][j] = simulationTotalPopulationPerYear[j][i]
     }
     totalPopulationPerSimulationStd[i]=math.std(totalPopulationPerSimulation[i])

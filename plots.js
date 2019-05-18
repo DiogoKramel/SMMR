@@ -24,8 +24,8 @@ var initialPopulationJuveniles = Math.round(params.initialPopulation * params.pe
 var initialPopulationFemales = Math.ceil((params.initialPopulation - params.initialPopulationJuveniles) * params.percentFemales / 100);
 var initialPopulationMales = params.initialPopulation - params.initialPopulationJuveniles - params.initialPopulationFemales;
 var numberShips = [];
-for (i = 0; i <= params.timeSimulated; i++) {
-    numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.timeSimulated + params.numberShipsInitial)
+for (i = 0; i <= params.numberYearsSimulated; i++) {
+    numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.numberYearsSimulated + params.numberShipsInitial)
 }
 var currentPopulation = params.initialPopulation;
 //var percentFemales = (100-percentJuveniles)/2;
@@ -90,7 +90,7 @@ Plotly.plot('input-data', data, layout);
 
 // build x axis with the years range
 var xAxis = [];
-for (x = 0; x <= timeSimulated; x++) {                            
+for (x = 0; x <= params.numberYearsSimulated; x++) {                            
     xAxis[x] = yearStartSimulation + x;
 };
 xAxis[0] = yearStartSimulation;
@@ -247,26 +247,25 @@ Plotly.newPlot('plot-deaths', data, layout);
 
 
 
-/********************************************************************************************
- *
+
 
 function cdfNormal (x, mean, standardDeviation) {
     return (1-math.erf((mean-x)/(Math.sqrt(2)*standardDeviation)))/2
-}
-shipStrikeDeathPerYear[0]=0;
+};
+
+shipStrikeDeathPerYear.y[0]=0;
 var probabilityShipStrike = [], probabilityShipStrikeAxis = [];
-for (t = 0; t < math.max(shipStrikeDeathPerYear)*1.15; t++) {
-    probabilityShipStrike[t]=cdfNormal(t, math.mean(shipStrikeDeathPerYear), math.std(shipStrikeDeathPerYear))*100;
+for (t = 1; t < math.max(shipStrikeDeathPerYear.y)*1.3*params.numberYearsSimulated; t++) {
+    probabilityShipStrike[t]=cdfNormal(t, math.mean(shipStrikeDeathPerYear.y)*params.numberYearsSimulated, math.std(shipStrikeDeathPerYear.y)*params.numberYearsSimulated)*100;
     probabilityShipStrikeAxis[t] = t;
-}
-naturalDeathPerYear[0]=0;
+};
+
+naturalDeathPerYear.y[0]=0;
 var probabilityNaturalDeath = [], probabilityNaturalDeathAxis = [];
-for (t = 0; t < math.max(naturalDeathPerYear)*1.15; t++) {
-    probabilityNaturalDeath[t]=cdfNormal(t, math.mean(naturalDeathPerYear), math.std(naturalDeathPerYear))*100;
+for (t = 0; t < math.max(naturalDeathPerYear.y)*1.3*params.numberYearsSimulated; t++) {
+    probabilityNaturalDeath[t]=cdfNormal(t, math.mean(naturalDeathPerYear.y)*params.numberYearsSimulated, math.std(naturalDeathPerYear.y)*params.numberYearsSimulated)*100;
     probabilityNaturalDeathAxis[t] = t;
 }
-
-
 
 // plot: probability
 var probabilityStrikes = {
@@ -333,4 +332,3 @@ var layout = {
     },
 };
 Plotly.newPlot('plot-probability-normal', data, layout);
-*/

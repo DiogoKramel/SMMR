@@ -127,177 +127,178 @@ jQuery(window).load(function() {
                 Marine Mammals: Biology and Conservation</a></i>, by Peter G. H. Evans and Juan Antonio Raga, published by Springer in 2012;
                 and the <i><a style = " white-space:nowrap; " href="https://books.google.it/books?hl=en&lr=&id=2rkHQpToi9sC&oi=fnd&pg=PP1&dq=Encyclopedia+of+marine+mammals&ots=hFiBJw7dut&sig=Z74utxSg1gQ3_spaeIb29wtD0lI#v=onepage&q=Encyclopedia%20of%20marine%20mammals&f=false">
                 Encyclopedia of Marine Mammals</a></i>, by William F. Perrin, Bernd Würsig, and J. G. M. Thewissen, published by Academic Press in 2009.</p>
-          </div> 
-        </div>
-      </div>
-    </div>
-  </section>
+          
 
-  <div id="carouselExampleControls" class="carousel slide">
-      <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
-      </ol>
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="col-md-12">
-              <div class="container">
-                <img src="assets/images/whales/blue-whale.png" alt="BlueWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-                <div class="middle">
-                  <div class="text">
-                    <b><i>Balaenoptera musculus</i></b><br>
-                    Life expectancy: 80-90 years<br>
-                    Sexual maturation: 5-10 years old<br> 
-                    Gestation: 10-12 months <br> 
-                    Birth: every 2-3 years
+              <div id="carouselExampleControls" class="carousel slide">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="5"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="6"></li>
+                  </ol>
+                  <div class="carousel-inner">
+                    <div class="carousel-item active">
+                      <div class="col-md-12">
+                          <div class="container">
+                            <img src="assets/images/whales/blue-whale.png" alt="BlueWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                            <div class="middle">
+                              <div class="text">
+                                <b><i>Balaenoptera musculus</i></b><br>
+                                Life expectancy: 80-90 years<br>
+                                Sexual maturation: 5-10 years old<br> 
+                                Gestation: 10-12 months <br> 
+                                Birth: every 2-3 years
+                              </div>
+                            </div>
+                          </div>
+                          <div class="carousel-caption d-none d-md-block">
+                            <button onclick="dataBlueWhale()" id = "btn1" class="btn-whale-selection"> <div id="test1"> Select Blue Whale</div></button>
+                            <button onclick="PlaySound('blue-whale')" class="btn-whale-selection"> Listen</button>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/fin-whale.png" alt="FinWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Balaenoptera physalus</i></b><br>
+                              Life expectancy: 85-95 years<br>
+                              Sexual maturation: 7-12 years<br>
+                              Gestation: 11 months<br> 
+                              Birth: every 2-3 years<br>
+                              Lives in groups of 2-7 individuals
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataFinWhale()" id = "btn3" class="btn-whale-selection"> <div id="test3"> Select Fin Whale</div></button>
+                          <button onclick="PlaySound('fin-whale')" class="btn-whale-selection"> Listen</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/right-whale.png" alt="RightWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Eubalaena glacialis</i></b><br>
+                              Life expectancy: 60 years or more<br>
+                              Sexual maturation: 5-21 years<br> 
+                              Gestation: 12 months<br> 
+                              Birth: every 2-3 years<br>
+                              Lives in groups of 2-3 individuals
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataRightWhale()" id = "btn4" class="btn-whale-selection"> <div id="test4"> Select Right Whale</div></button>
+                          <button onclick="PlaySound('right-whale')" class="btn-whale-selection"> Listen</button>
+                        </div>
+                      </div>    
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/humpback-whale.png" alt="HumpbackWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Megaptera novaeangliae</i></b><br>
+                              Life expectancy: 45 years or more<br>
+                              Sexual maturation: 5-7 years<br> 
+                              Gestation: 11 months<br> 
+                              Birth: every 2-4 years<br>
+                              Lives in groups of 2-3 individuals
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataHumpbackWhale()" id = "btn5" class="btn-whale-selection"> <div id="test5"> Select Humpback Whale</div></button>
+                          <button onclick="PlaySound('humpback-whale')" class="btn-whale-selection"> Listen</button>
+                        </div>
+                      </div>  
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/gray-whale.png" alt="GrayWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Eschrichtius robustus</i></b><br>
+                              Life expectancy: 50-70 years<br>
+                              Sexual maturation: 5-11 years<br> 
+                              Gestation: 12 months<br> 
+                              Birth: every 2-3 years<br>
+                              Lives in groups of up to 16 individuals
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataGrayWhale()" id = "btn6" class="btn-whale-selection"> <div id="test6"> Select Gray Whale</div></button>
+                          <button onclick="PlaySound('gray-whale')" class="btn-whale-selection"> Listen</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/sperm-whale.png" alt="SpermWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Physeter macrocephalu</i></b><br>
+                              Life expectancy: 70 years or more<br>
+                              Sexual maturation: 9-10 years old<br>
+                              Gestation: 16 months<br>
+                              Birth: every 3-5 years<br>
+                              Lives in groups of 20-50 individuals
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataSpermWhale()" id = "btn2" class="btn-whale-selection"> <div id="test2"> Select Sperm Whale</div></button>
+                          <button onclick="PlaySound('sperm-whale')" class="btn-whale-selection"> Listen</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="carousel-item">
+                      <div class="col-md-12">
+                        <div class="container">
+                          <img src="assets/images/whales/undentifiedwhale.png" alt="AlternativeWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
+                          <div class="middle">
+                            <div class="text">
+                              <b><i>Alternative species</i></b><br>
+                              Life expectancy: defined by the user<br>
+                              Sexual maturation: defined by the user<br> 
+                              Gestation: defined by the user<br>
+                              Birth: defined by the user
+                            </div>
+                          </div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block">
+                          <button onclick="dataAlternativeWhale()" id = "btn7" class="btn-whale-selection"> <div id="test7"> Alternative species</div></button>
+                        </div>
+                      </div>
+                    </div>
                   </div>
+                  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
-              </div>
-              <div class="carousel-caption d-none d-md-block">
-                <button onclick="dataBlueWhale()" id = "btn1" class="btn-whale-selection"> <div id="test1"> Select Blue Whale</div></button>
-                <button onclick="PlaySound('blue-whale')" class="btn-whale-selection"> Listen</button>
-              </div>
-            </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/fin-whale.png" alt="FinWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Balaenoptera physalus</i></b><br>
-                  Life expectancy: 85-95 years<br>
-                  Sexual maturation: 7-12 years<br>
-                  Gestation: 11 months<br> 
-                  Birth: every 2-3 years<br>
-                  Lives in groups of 2-7 individuals
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataFinWhale()" id = "btn3" class="btn-whale-selection"> <div id="test3"> Select Fin Whale</div></button>
-              <button onclick="PlaySound('fin-whale')" class="btn-whale-selection"> Listen</button>
+              </div> 
             </div>
           </div>
         </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/right-whale.png" alt="RightWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Eubalaena glacialis</i></b><br>
-                  Life expectancy: 60 years or more<br>
-                  Sexual maturation: 5-21 years<br> 
-                  Gestation: 12 months<br> 
-                  Birth: every 2-3 years<br>
-                  Lives in groups of 2-3 individuals
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataRightWhale()" id = "btn4" class="btn-whale-selection"> <div id="test4"> Select Right Whale</div></button>
-              <button onclick="PlaySound('right-whale')" class="btn-whale-selection"> Listen</button>
-            </div>
-          </div>    
-        </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/humpback-whale.png" alt="HumpbackWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Megaptera novaeangliae</i></b><br>
-                  Life expectancy: 45 years or more<br>
-                  Sexual maturation: 5-7 years<br> 
-                  Gestation: 11 months<br> 
-                  Birth: every 2-4 years<br>
-                  Lives in groups of 2-3 individuals
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataHumpbackWhale()" id = "btn5" class="btn-whale-selection"> <div id="test5"> Select Humpback Whale</div></button>
-              <button onclick="PlaySound('humpback-whale')" class="btn-whale-selection"> Listen</button>
-            </div>
-          </div>  
-        </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/gray-whale.png" alt="GrayWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Eschrichtius robustus</i></b><br>
-                  Life expectancy: 50-70 years<br>
-                  Sexual maturation: 5-11 years<br> 
-                  Gestation: 12 months<br> 
-                  Birth: every 2-3 years<br>
-                  Lives in groups of up to 16 individuals
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataGrayWhale()" id = "btn6" class="btn-whale-selection"> <div id="test6"> Select Gray Whale</div></button>
-              <button onclick="PlaySound('gray-whale')" class="btn-whale-selection"> Listen</button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/sperm-whale.png" alt="SpermWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Physeter macrocephalu</i></b><br>
-                  Life expectancy: 70 years or more<br>
-                  Sexual maturation: 9-10 years old<br>
-                  Gestation: 16 months<br>
-                  Birth: every 3-5 years<br>
-                  Lives in groups of 20-50 individuals
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataSpermWhale()" id = "btn2" class="btn-whale-selection"> <div id="test2"> Select Sperm Whale</div></button>
-              <button onclick="PlaySound('sperm-whale')" class="btn-whale-selection"> Listen</button>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="col-md-12">
-            <div class="container">
-              <img src="assets/images/whales/undentifiedwhale.png" alt="AlternativeWhale" class="image" style="width: 50%; margin-left: auto; margin-right: auto">
-              <div class="middle">
-                <div class="text">
-                  <b><i>Alternative species</i></b><br>
-                  Life expectancy: defined by the user<br>
-                  Sexual maturation: defined by the user<br> 
-                  Gestation: defined by the user<br>
-                  Birth: defined by the user
-                </div>
-              </div>
-            </div>
-            <div class="carousel-caption d-none d-md-block">
-              <button onclick="dataAlternativeWhale()" id = "btn7" class="btn-whale-selection"> <div id="test7"> Alternative species</div></button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
+      </section>
     
   <!-- Simulation configuration -->
   <br><br>
