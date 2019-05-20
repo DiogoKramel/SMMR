@@ -228,50 +228,47 @@
 		</div>
   	</section>
 
-	<!-- Flowchart 
-	https://mermaidjs.github.io/flowchart.html -->
+	<!-- Flowchart -->
+	<!-- https://mermaidjs.github.io/flowchart.html -->
   	<section>
-		<div id="process-section" class="pad-sec-0">
+		<div id="process-section" class="pad-sec-0 pad-bt-20">
 			<div class="container">
-				<div class="title-section pad-bt-40">
-					<p class="tab-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-					<div class="row">
-						<div class="col-sm-3">
+				<p class="tab-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+				<div class="row">
+					<div class="col-sm-3"></div>
+					<div class="col-sm-6">
+						<div class="mermaid">
+							graph TD
+							A["Start"]
+							A-->B("Input data")
+							B-->C(Study area);
+							B-->D(Species Data);
+							B-->E(Simulation);
+							B-->F(Anthropogenic Activities);
+							C-->G(Create initial population);
+							D-->G;
+							E-->G;
+							F-->G;
+							G-->H(Females give birth and get pregnant);
+							H-->I(Natural Deaths);
+							I-->J(Ship strikes removal);
+							J-->K(Other threats deaths);
+							K-->L{Decision}
+							L-- Add one year more -->H
+							L-- Time period reached -->M{Decision}
+							M-- Add one more loop -->G
+							M-- Loop is over -->N(Calculate averages)
+							N-->O(Population size)
+							N-->P(Average age)
+							N-->Q(Deaths)
+							P-->R[End]
+							O-->R
+							Q-->R
+							classDef changeColor fill:#e4e8ec, stroke:#838383, text-align: center;
+							class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R changeColor;
 						</div>
-						<div class="col-sm-6">
-							<div class="mermaid middle">
-								graph TD
-								A["Start"]
-								A-->B("Input data")
-								B-->C(Study area);
-								B-->D(Species Data);
-								B-->E(Simulation);
-								B-->F(Anthropogenic Activities);
-								C-->G(Create initial population);
-								D-->G;
-								E-->G;
-								F-->G;
-								G-->H(Females give birth and get pregnant);
-								H-->I(Natural Deaths);
-								I-->J(Ship strikes removal);
-								J-->K(Other threats deaths);
-								K-->L{Decision}
-								L-- Add one year more -->H
-								L-- Time period reached -->M{Decision}
-								M-- Add one more loop -->G
-								M-- Loop is over -->N(Calculate averages)
-								N-->O(Population size)
-								N-->P(Average age)
-								N-->Q(Deaths)
-								P-->R[End]
-								O-->R
-								Q-->R
-								classDef changeColor fill:#e4e8ec, stroke:#838383;
-								class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R changeColor;
-							</div>
-							<script src="assets/js/mermaid.min.js"></script>
-							<script>mermaid.initialize({startOnLoad:true});</script>
-						</div>
+						<script src="assets/js/mermaid.min.js"></script>
+						<script>mermaid.initialize({startOnLoad:true});</script>
 					</div>
 				</div>
 			</div>
@@ -296,12 +293,11 @@
       		</div>
     	</div>
 	</div>
-	<br><br>
       
   <!-- Team section -->
 	<div id="team-section" class="">
 		<div class="container">
-			<div class="title-section pad-bt-20">
+			<div class="title-section pad-sec-40 pad-bt-20">
 				<div class="row">
 					<div class="col-sm-12">
 						<h2>Authors</h2>
