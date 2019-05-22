@@ -1,43 +1,31 @@
-/* INPUT DATA OF THE STUDY AREA (BY THE USER) */
-// Extracting the input data from the url
-
+// Basic calculation
 var params = {};
-var getParams = function (url) {
-	var parser = document.createElement('a');
-	parser.href = url;
-	var query = parser.search.substring(1);
-	var vars = query.split('&');
-	for (var i = 0; i < vars.length; i++) {
-		var pair = vars[i].split('=');
-        params[pair[0]] = decodeURIComponent(pair[1]);
-	}
-    return params;
-};
 
 var url = location.search; // Get the raw url with the input data
-getParams(url);
+var parser = document.createElement('a');
+parser.href = url;
+var query = parser.search.substring(1);
+var vars = query.split('&');
+for (var i = 0; i < vars.length; i++) {
+	var pair = vars[i].split('=');
+	params[pair[0]] = decodeURIComponent(pair[1]);
+};
 
-
-var strikeType = 'perYear';
-var strikeClass = ['male', 'female', 'juvenile'];       //random //female ['', 'female', ''] // juvenile ['', '', 'juvenile']
-var initialPopulationJuveniles = Math.round(params.initialPopulation * params.percentJuveniles / 100);
-var initialPopulationFemales = Math.ceil((params.initialPopulation - params.initialPopulationJuveniles) * params.percentFemales / 100);
-var initialPopulationMales = params.initialPopulation - params.initialPopulationJuveniles - params.initialPopulationFemales;
+var yearStartSimulation = 2019;
 var numberShips = [];
 for (i = 0; i <= params.numberYearsSimulated; i++) {
     numberShips[i] = Math.round(i*(params.numberShipsFinal - params.numberShipsInitial) / params.numberYearsSimulated + params.numberShipsInitial)
 }
-var currentPopulation = params.initialPopulation;
-//var percentFemales = (100-percentJuveniles)/2;
-//var percentMales = 100-percentJuveniles-percentFemales;
-var ageFemaleSterile = Math.round((params.ageLifeExpectancy - params.ageMaturationMax) * 0.6 + params.ageMaturationMax);
-var yearStartSimulation = 2019;
-var currentYear = yearStartSimulation;
 
-/********************************************************************************************
- * PLOTS CONFIGURATIOIN
-********************************************************************************************/
-// table input data
+// Build x axis with the years range
+var xAxis = [];
+for (x = 0; x <= params.numberYearsSimulated; x++) {                            
+    xAxis[x] = yearStartSimulation + x;
+};
+xAxis[0] = yearStartSimulation;
+
+
+// Table - Input data
 var values = [
     ['Time simulated', 'Number of simulations', 'Initial population',
     'Percentage of juveniles', 'Initial number of ships', 'Final number of ships',
@@ -58,22 +46,22 @@ var values = [
     params.probSurvivalJuveniles+'%', 
     params.whalingRateYear+'%', 
     params.strandingRateYear+'%', 
-    params.otherRateYear+'%']]
-
+	params.otherRateYear+'%']
+]
 var data = [{
-type: 'table',
-columnorder: [1,2],
-columnwidth: [250,150],
-header: {
-  values: [["PARAMETERS IMPLEMENTED"], ["VALUE"]],
-  align: ["left","center"],
-  fill: {color: "black"},
-  font: {color: "white"}
-},
-cells: {
-  values: values,
-  align: ["left","center"],
-},
+	type: 'table',
+	columnorder: [1, 2],
+	columnwidth: [250, 150],
+	header: {
+		values: [["PARAMETERS IMPLEMENTED"], ["VALUE"]],
+		align: ["left","center"],
+		fill: {color: "black"},
+		font: {color: "white"}
+	},
+	cells: {
+		values: values,
+		align: ["left","center"],
+	},
 }]
 var layout = {
     font: {
@@ -84,19 +72,12 @@ var layout = {
         b: 0,
         t: 50,
         pad: 4
-      },
+    },
 };
 Plotly.plot('input-data', data, layout);
 
-// build x axis with the years range
-var xAxis = [];
-for (x = 0; x <= params.numberYearsSimulated; x++) {                            
-    xAxis[x] = yearStartSimulation + x;
-};
-xAxis[0] = yearStartSimulation;
 
-
-// plot: population increase
+// Plot - Population increase
 var plotOne = {
     x: xAxis,
     y: simulationTotalPopulationPerYearAverageStdMax,
@@ -118,7 +99,6 @@ var plotTwo = {
       width: 1,
       color: 'rgb(225,45,45)',
     },
-    
     fill: 'tonexty',
     fillcolor: 'rgba(225,45,45,0.3)',
 };
@@ -128,7 +108,6 @@ var plotThree = {
     type: 'scatter',
     name: 'Total population',
 };
-  
 var plotFour = {
     x: xAxis,
     y: simulationJuvenilePopulationPerYearAverage,
@@ -166,9 +145,7 @@ var data = [plotOne, plotTwo, plotThree, plotFour, plotFive, plotSix];
 Plotly.newPlot('plot-population', data, layout);
 
 
-
-
-// plot: aging
+// Plot - Aging
 var agePerYearAverage = {
     x: xAxis, 
     y: simulationAgingPopulationAverage, 
@@ -194,7 +171,7 @@ var layout = {
 Plotly.newPlot('plot-aging', data, layout);
 
 
-// plot: death causes
+// Plot - death causes
 var shipStrikeDeathPerYear = {
     x: xAxis, 
     y: simulationShipStrikeAverage, 
@@ -246,9 +223,7 @@ var layout = {
 Plotly.newPlot('plot-deaths', data, layout);
 
 
-
-
-
+// Standard deviation
 function cdfNormal (x, mean, standardDeviation) {
     return (1-math.erf((mean-x)/(Math.sqrt(2)*standardDeviation)))/2
 };
@@ -267,42 +242,63 @@ for (t = 0; t < math.max(naturalDeathPerYear.y)*1.3*params.numberYearsSimulated;
     probabilityNaturalDeathAxis[t] = t;
 }
 
-// plot: probability
-var probabilityStrikes = {
-    x: probabilityShipStrikeAxis, 
-    y: probabilityShipStrike,
-    type: 'bar',
-    name: 'Ship strike',
-};
-var probabilityNatural = {
-    x: probabilityNaturalDeathAxis, 
-    y: probabilityNaturalDeath,
-    type: 'bar',
-    name: 'Natural cause',
-};
-var data = [probabilityStrikes, probabilityNatural];
-var layout = {
-    title: 'Probability of having at least this amount of deaths',
-    barmode: 'group',
-    yaxis: {
-        title: 'Probability [%]',
-        showgrid: true,
-        zeroline: false,
-        linewidth: 1,
-        mirror: true
-    },
-    xaxis: {
-        title: 'Number of deaths',
-        showgrid: true,
-        zeroline: false,
-        linewidth: 1,
-        mirror: true
-    },
-};
-Plotly.newPlot('plot-probability', data, layout);
+// Plot - Probability of at least
+var dataSet;
+var dataSetX;
+var nameSet;
+function makeTrace(i) {
+	if (i == 0) {
+		dataSet = probabilityShipStrike,
+		dataSetX = probabilityShipStrikeAxis
+	} else if (i == 1) {
+		dataSet = probabilityNaturalDeath
+		dataSetX = probabilityNaturalDeathAxis
+	};
+    return {
+		x: dataSetX,
+		y: dataSet,
+        line: {
+            shape: 'spline',
+        },
+        visible: i === 0,
+    };
+}
+Plotly.plot('plot-probability', [0, 1].map(makeTrace), {
+    updatemenus: [{
+		y: 1,
+		x: 0,
+		yanchor: 'top',
+		xanchor: 'left',
+        buttons: [{
+            method: 'restyle',
+            args: ['visible', [true, false, false, false]],
+            label: 'Ship Strikes'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, true, false, false]],
+            label: 'Natural deaths'
+        }]
+	}],
+	title: 'Probability of having at least this amount of deaths',
+	yaxis: {
+		title: 'Probability [%]',
+		showgrid: true,
+		zeroline: false,
+		linewidth: 1,
+		mirror: true
+	},
+	xaxis: {
+		title: 'Number of deaths',
+		showgrid: true,
+		zeroline: false,
+		linewidth: 1,
+		mirror: true
+	},
+});
 
 
-// plot: probability normal distribution
+
+// Plot - Probability normal distribution
 var probabilityShipStrikeNormal = [], probabilityShipStrikeNormalAxis = [];
 for (t = 1; t < probabilityShipStrike.length; t++) {
     probabilityShipStrikeNormal[t] = probabilityShipStrike[t]-probabilityShipStrike[t-1];
@@ -332,3 +328,85 @@ var layout = {
     },
 };
 Plotly.newPlot('plot-probability-normal', data, layout);
+
+
+// Plot - Histogram Age
+var trace = {
+    x: ageLastYear,
+    type: 'histogram',
+  };
+var data = [trace];
+var layout = {
+    title: 'Age profile',
+    yaxis: {
+        title: 'Number of individuals',
+        showgrid: true,
+        zeroline: false,
+        linewidth: 1,
+        mirror: true
+    },
+    xaxis: {
+        title: 'Age in years',
+        showgrid: true,
+        zeroline: false,
+        linewidth: 1,
+        mirror: true
+    },
+};
+Plotly.newPlot('plotAgeLastYear', data);
+
+
+// Plot - All shit
+var data = [];
+for (var j = 0; j < params.numberSimulations; j++) {
+	data.push({
+		type: "scattergl",
+		mode: "line",
+		x: xAxis,
+		y: simulationTotalPopulationPerYear[j],
+		opacity: 0.3,
+		line: {color: 'grey'},
+	})
+}
+data.push({
+    x: xAxis,
+    y: simulationTotalPopulationPerYearAverageStdMax,
+    mode: 'lines',
+    name: 'Maximum Standard deviation',
+    line: {
+      dash: 'dot',
+      width: 2,
+      color: 'rgb(225,45,45)',
+    },
+}),
+data.push({
+    x: xAxis,
+    y: simulationTotalPopulationPerYearAverageStdMin,
+    mode: 'lines',
+    name: 'Minimum Standard deviation',
+    line: {
+      dash: 'dot',
+      width: 2,
+      color: 'rgb(225,45,45)',
+    },
+})
+var layout = {
+	showlegend: false,
+	title: 'Number and cause of deaths per year',
+	xaxis: {
+		title: 'Year',
+		showgrid: true,
+        linewidth: 1,
+		mirror: true,
+		autorange: true
+	},
+	yaxis: {
+		title: 'Number of deaths',
+		showgrid: true,
+        linewidth: 1,
+		mirror: true,
+		rangemode: 'tozero',
+    	autorange: true
+	},
+}
+Plotly.plot('graph', data, layout)
