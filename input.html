@@ -359,7 +359,7 @@ jQuery(window).load(function() {
                   <div>Probability of survival for juveniles: 
                     <input type="text" name="probSurvivalJuveniles" value="93" size="6" style="text-align:center"> %  
                     <div class="popup" onclick="myFunction5()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                      <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It is, in general, lower than the probability for adults.</span>
+                      <span class="popuptext" id="myPopup5">Probability of surviving for juvenile individuals determined by a binomial distribution. It should be, in general, lower than the probability for adults.</span>
                     </div>
                   </div>
                 </fieldset>
@@ -372,16 +372,16 @@ jQuery(window).load(function() {
                     <div>Percentage of juveniles:
                       <input type="text" name="percentualJuveniles" value="40" size="6" style="text-align:center"> % of juveniles
                       <div class="popup" onclick="myFunction15()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                        <span class="popuptext" id="myPopup15">The percentage of females and males are equally divided in the remaining percentage.</span>
+                        <span class="popuptext" id="myPopup15">The juvenile individuals will be 50% male and 50% female. </span>
                       </div>
                     </div></p>
-                    <div>Percentage of females:
+                    <div>Percentage of adult females:
                       <input type="text" name="percentualFemales" value="50" size="6" style="text-align:center"> % of females
                     </div></p>
                     <div>Number of ships crossing the study area at the first year:
                       <input type="text" name="numberShipsInitial" value="250" size="6" style="text-align:center" > ships
                     </div></p>
-                    <div>Number of ships crossing the study area at the last year:
+                    <div>Estimated number of ships crossing the study area at the last year:
                       <input type="text" name="numberShipsExpectedFinal" value="300" size="6" style="text-align:center"> ships 
                       <div class="popup" onclick="myFunction7()"><i class="fa fa-1x fa-binoculars style=regular"></i>
                         <span class="popuptext" id="myPopup7"> It can be higher, equal or lower than the initial number of ships </span>
@@ -398,7 +398,7 @@ jQuery(window).load(function() {
                     <div>Number of simulations:
                       <input type="text" name="numberSimulations" value="100" size="6" style="text-align:center"> simulations 
                       <div class="popup" onclick="myFunction8()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                        <span class="popuptext" id="myPopup8">IMPORTANT: MOMENTANEOUSLY DEACTIVATED. How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
+                        <span class="popuptext" id="myPopup8">How many times this scenario is simulated. It is important to avoid random results but keep it still aleatory. For a 100 interactions loop = 5s; 500 = 15s; 1000 = 20s. More than 1000 simulations might not affect the results.</span>
                       </div>
                     </div>
                   </div>
@@ -418,26 +418,26 @@ jQuery(window).load(function() {
                       <div class="popup" onclick="myFunction10()"><i class="fa fa-1x fa-binoculars style=regular"></i>
                       <span class="popuptext" id="myPopup10">An worst case scenario can be predicted by selecting the most sensitive class of the population, in this case females or juveniles.</span>
                     </div><br>
-                      <input type="radio" name="strikeClass" value="1" checked> Random<br>
-                      <input type="radio" name="strikeClass" value="2"> Female<br>
-                      <input type="radio" name="strikeClass" value="3"> Juveniles
+                      <input type="radio" name="strikeClass" value="1" checked> Male, female, and juvenile<br>
+                      <input type="radio" name="strikeClass" value="2"> Only Female<br>
+                      <input type="radio" name="strikeClass" value="3"> Only Juvenile
                     </div></p>
                     <div>Whaling or Bycatch:
                       <input type="text" name="whalingRateYear" value="0" size="6" style="text-align:center"> whales fished per years 
                       <div class="popup" onclick="myFunction11()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                        <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume uneven values.</span>
+                        <span class="popuptext" id="myPopup11">If the study area allows whaling, estimations of individuals hunted in the group can be added. It can assume non-round values.</span>
                       </div>
                     </div></p>
                     <div>Stranding or beaching:
                       <input type="text" name="strandingRateYear" value="0" size="6" style="text-align:center"> whales found on the beach per year 
                       <div class="popup" onclick="myFunction12()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                        <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume uneven values.</span>
+                        <span class="popuptext" id="myPopup12">It occurs when whales swim or float to shore and cannot remove themselves. It is associated to sick animals, injured, navigational errors or social bonding too close to the shore. It can assume non-round values.</span>
                       </div>
                     </div></p>
                     <div>Other threats:
                       <input type="text" name="otherRateYear" value="0" size="6" style="text-align:center"> whales extracted per year 
                       <div class="popup" onclick="myFunction13()"><i class="fa fa-1x fa-binoculars style=regular"></i>
-                        <span class="popuptext" id="myPopup13">In case the study area faces a threat that was not predicted, the amount of individuals to affected and removed each year can be inserted here. It can assume uneven values.</span>
+                        <span class="popuptext" id="myPopup13">In case the study area faces a threat that was not predicted, the amount of individuals to affected and removed each year can be inserted here. It can assume non-round values.</span>
                       </div>
                     </div>
                   </div>
