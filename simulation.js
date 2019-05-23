@@ -431,14 +431,21 @@ for (var i = 0; i <= params.numberYearsSimulated; i++) {
 var totalPopulationPerSimulation = [],
 	totalPopulationPerSimulationStd = [],
 	simulationTotalPopulationPerYearAverageStdMax = [],
-	simulationTotalPopulationPerYearAverageStdMin = [];
+	simulationTotalPopulationPerYearAverageStdMin = [],
+	simulationTotalPopulationPerYearCI = [],
+	simulationTotalPopulationPerYearCIMin = [],
+	simulationTotalPopulationPerYearCIMax = [];
 
+// https://erictheise.com/mctad.js/confidence-intervals/
 for (var i = 0; i <= params.numberYearsSimulated; i++) {
     totalPopulationPerSimulation[i] = [];
     for (var j = 0; j < params.numberSimulations; j++) {
         totalPopulationPerSimulation[i][j] = simulationTotalPopulationPerYear[j][i]
     };
     totalPopulationPerSimulationStd[i] = math.std(totalPopulationPerSimulation[i])
-    simulationTotalPopulationPerYearAverageStdMax[i] = simulationTotalPopulationPerYearAverage[i] + totalPopulationPerSimulationStd[i];
-    simulationTotalPopulationPerYearAverageStdMin[i] = simulationTotalPopulationPerYearAverage[i] - totalPopulationPerSimulationStd[i];
+	simulationTotalPopulationPerYearCI[i] = mctad.confidenceIntervalOnTheMean(simulationTotalPopulationPerYearAverage[i], totalPopulationPerSimulationStd[i]*2, params.numberSimulations, 0.05);
+	simulationTotalPopulationPerYearAverageStdMax[i] = simulationTotalPopulationPerYearAverage[i] + totalPopulationPerSimulationStd[i];
+	simulationTotalPopulationPerYearAverageStdMin[i] = simulationTotalPopulationPerYearAverage[i] - totalPopulationPerSimulationStd[i];
+	simulationTotalPopulationPerYearCIMin[i] = (simulationTotalPopulationPerYearCI[i])[0];
+	simulationTotalPopulationPerYearCIMax[i] = (simulationTotalPopulationPerYearCI[i])[1]
 };

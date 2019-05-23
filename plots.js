@@ -28,14 +28,15 @@ xAxis[0] = yearStartSimulation;
 // Table - Input data
 var values = [
     ['Time simulated', 'Number of simulations', 'Initial population',
-    'Percentage of juveniles', 'Initial number of ships', 'Final number of ships',
+    'Percentage of juveniles', 'Percentage of female', 'Initial number of ships', 'Final number of ships',
     'Type of strike', 'Rate of strikes',  'Life expectancy',
     'Age maturation', 'Probability of birth', 'Probability of natural death for adults',
     'Probability of natural death for juveniles','Whaling', 'Stranding', 'Others'],
     [params.numberYearsSimulated+' years', 
     params.numberSimulations+' simulations', 
     params.initialPopulation+' individuals', 
-    params.percentualJuveniles+'%', 
+	params.percentualJuveniles+'%', 
+	params.percentualFemales+'%', 
     params.numberShipsInitial+' ships', 
     params.numberShipsExpectedFinal+' ships', 'Random', 
     params.strikeRateYear+' strikes per year or ship',  
@@ -80,9 +81,9 @@ Plotly.plot('input-data', data, layout);
 // Plot - Population increase
 var plotOne = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearAverageStdMax,
+    y: simulationTotalPopulationPerYearCIMax,
     mode: 'lines',
-    name: 'Maximum Standard deviation',
+    name: 'Maximum C.I. 99%',
     line: {
       dash: 'dot',
       width: 1,
@@ -91,9 +92,9 @@ var plotOne = {
 };
 var plotTwo = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearAverageStdMin,
+    y: simulationTotalPopulationPerYearCIMin,
     mode: 'lines',
-    name: 'Minimum Standard deviation',
+    name: 'Minimum C.I. 99%',
     line: {
       dash: 'dot',
       width: 1,
@@ -127,7 +128,7 @@ var plotSix = {
     name: 'Male population'
 };
 var layout = {
-    title: 'Whale population variation over time',
+	title: 'Population over time',
     xaxis: {
         title: 'Year',
         showgrid: true,
@@ -139,7 +140,10 @@ var layout = {
         showline: true,
         linewidth: 1,
         mirror: true
-    },
+	},
+	margin: {
+		r: 265,
+	},
 };
 var data = [plotOne, plotTwo, plotThree, plotFour, plotFive, plotSix];
 Plotly.newPlot('plot-population', data, layout);
@@ -204,8 +208,7 @@ var otherThreatPerYear = {
 };
 var data = [shipStrikeDeathPerYear, naturalDeathPerYear, whalingWhalesPerYear, strandingWhalesPerYear, otherThreatPerYear];
 var layout = {
-    title: 'Number and cause of deaths per year',
-    autosize: true,
+	title: 'Number and cause of deaths per year',
     xaxis: {
         title: 'Year',
         showgrid: true,
@@ -218,7 +221,10 @@ var layout = {
         linewidth: 1,
         mirror: true
     },
-    barmode: 'relative',
+	barmode: 'relative',
+	margin: {
+		r: 250,
+	},
 };
 Plotly.newPlot('plot-deaths', data, layout);
 
@@ -297,7 +303,6 @@ Plotly.plot('plot-probability', [0, 1].map(makeTrace), {
 });
 
 
-
 // Plot - Probability normal distribution
 var probabilityShipStrikeNormal = [], probabilityShipStrikeNormalAxis = [];
 for (t = 1; t < probabilityShipStrike.length; t++) {
@@ -353,7 +358,7 @@ var layout = {
         mirror: true
     },
 };
-Plotly.newPlot('plotAgeLastYear', data);
+Plotly.newPlot('plotAgeLastYear', data, layout);
 
 
 // Plot - All shit
@@ -389,10 +394,32 @@ data.push({
       width: 2,
       color: 'rgb(225,45,45)',
     },
+}),
+data.push({
+    x: xAxis,
+    y: simulationTotalPopulationPerYearCIMax,
+    mode: 'lines',
+    name: 'Maximum CI 95%',
+    line: {
+      dash: 'dot',
+      width: 2,
+      color: 'blue',
+    },
+}),
+data.push({
+    x: xAxis,
+    y: simulationTotalPopulationPerYearCIMin,
+    mode: 'lines',
+    name: 'Minimum CI 95%',
+    line: {
+      dash: 'dot',
+      width: 2,
+      color: 'blue',
+    },
 })
 var layout = {
 	showlegend: false,
-	title: 'Number and cause of deaths per year',
+	title: 'All simulations run',
 	xaxis: {
 		title: 'Year',
 		showgrid: true,
@@ -401,7 +428,7 @@ var layout = {
 		autorange: true
 	},
 	yaxis: {
-		title: 'Number of deaths',
+		title: 'Number of individuals',
 		showgrid: true,
         linewidth: 1,
 		mirror: true,
@@ -409,4 +436,4 @@ var layout = {
     	autorange: true
 	},
 }
-Plotly.plot('graph', data, layout)
+Plotly.plot('plot-allSimulations', data, layout)

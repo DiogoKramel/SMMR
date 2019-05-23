@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
   <!-- Basic page information -->
-	<meta name="description" content="f">
+	<meta name="description" content="An online application designed to evaluate the impact of anthropogenic activities on marine mammals species">
 	<meta name="keywords" content="Whales, Agent-based Model, Simulation">
 	<meta name="author" content="Diogo Kramel">
   <title> Results </title>
@@ -42,6 +42,7 @@
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/5.10.0/math.js"></script>
   <script src="assets/snippets/seedrandom-min.js"></script>
+  <script src="assets/snippets/mctad.min.js"></script>
 
   <!-- JS libraries and scripts -->
   <script src="assets/js/jquery-1.11.3.min.js"></script>
@@ -124,8 +125,8 @@
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <div class="head-title-2 text-center">
-              <h2>RESULTS FOR SIMULATION </h2>
-              <h4>Population growth and strikes per year </h4>
+              <h2>SIMULATION RESULTS</h2>
+              <h4>Population growth, death causes and estimated profile</h4>
             </div>
           </div>
         </div>
@@ -147,11 +148,12 @@
         <div class="col-md-12">
             <h3 class="bt-0">Parameters implemented</h3>
             <p>
-              The simulation is concluded. An overview of the parameters that were implemented in the algorithm is listed in the Table below. 
-              Following the table, you will find the results plotted over time. All of them can be exported as image to your computer. 
-              At the end of the page you can also find the link to rerun the simulation.
+			  The simulation is concluded. An overview of the parameters that were implemented in the algorithm is listed in the table below. Following the table, you will find the results plotted over time and several analyses derivated from your initial data. All of them can be exported as an image to your computer. 
+			</p>
+			<p>
+              At the end of the page, you can also find the link to return to the simulation and change the initial parameters.
             </p>
-            <div id="input-data" class="arialblack centerimg" style="width: 60%;"></div>
+            <div id="input-data" class="arialblack centerimg" style="width: 500pt"></div>
             <h3 class="bt-0">Species selected</h3>
             <p><div id="result" class="arialblack"></div></p>
             <img src="" id ="WhaleFig" class="centerimg">
@@ -162,25 +164,21 @@
             </script>
             <h3 class="bt-0">SIMULATION RESULTS</h3>
             <p>
-              Through this line chart we can visualize the trend over time (in years). 
-              The chart shows the total population variaton throughout time, as well as divided in three categories: 
-              adult females, adult males and juveniles of both genders.
+				Through this line chart, we can visualize the trend over time (in years). The chart shows the total population variation throughout time, as well as divided into three categories: adult females, adult males, and juveniles of both genders. The confidence interval for the total population limits is 99%.
             </p>
             <div id="plot-population" style="width: 100%;"></div>
             <br>
             <p>
-              This is histogram is a representation of the distribution of the ship strikes and natural deaths observed in the time period simulated.
+            	Here we can see the distribution of the ship strikes and natural deaths observed in the time period simulated, as well as other threats, in case of any. The numbers per year are an approximation of the average, and for this reason, they are not necessarily round numbers.
             </p>
             <div id="plot-deaths" style="width: 100%;"></div>
 		</div> 
 		<div class="col-md-12">
 			<div class="col-md-6">
-				<p> This plot can help you understand the aging process of the population. 
-				In case the happen to be growing older, the feritle will decrease and in a near future population will also decrease.</p>
+				<p> The graph below may help you understand the aging process of the population. In case they happen to be growing older on average, the fertility will decrease and in a near future population will also decrease.</p>
 			</div>
 			<div class="col-md-6">
-				<p> This plot can help you understand the aging process of the population. 
-				In case the happen to be growing older, the feritle will decrease and in a near future population will also decrease.</p>
+				<p> The same applies to the age profile in the last year. Normally, the population will have a high number of juveniles, that slowly decrease until the life expectancy is reached.</p>
 			</div>
 		</div>
 		<div class="col-md-12">
@@ -193,10 +191,10 @@
 		</div>
 		<div class="col-md-12">
 			<div class="col-md-6">
-				<p>A probability density function (PDF), or density of a continuous random variable, is a function, whose value at any given sample (or point) in the sample space (the set of possible values taken by the random variable) can be interpreted as providing a relative likelihood that the value of the random variable would equal that sample. The sum of each individual probability should result in 100%.</p>
+				<p>A probability density function (PDF) is a function, whose value can be interpreted as providing a relative likelihood for a certain number of collisions. The sum of each individual probability should result in 100%.</p>
 			</div>
 			<div class="col-md-6">
-				<p>Cumulative distribution function (CDF) of a variable Y, evaluated at x, is the probability that Y will take a value less than or equal to x. In other words, the plot shows the probability of having the number of strikes in the horizontal axis (or less).</p>
+				<p>Cumulative distribution function (CDF) of the probability of having a certain number of deaths, is the probability for having that number of deaths or less. Choose the cause of death in the dropdown box to update the graph. </p>
 			</div>
 		</div>
 		<div class="col-md-12">
@@ -208,7 +206,8 @@
 			</div>
 		</div>
 		<div class="col-md-12">
-			<div id="graph" style="width: 100%;"></div><br>
+			<p>Lastly, all the simulations run are plotted over time, along with the standard deviation and the confidence interval, in order to show the most positive and negative cases and how far they are from the average.</p>
+			<div id="plot-allSimulations" style="width: 100%;"></div><br>
 		</div>
         </div> 
       </div>
