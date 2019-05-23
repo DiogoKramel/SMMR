@@ -81,7 +81,7 @@ Plotly.plot('input-data', data, layout);
 // Plot - Population increase
 var plotOne = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearCIMax,
+    y: simulationTotalPopulationPerYearAverageStdMax,
     mode: 'lines',
     name: 'Maximum C.I. 99%',
     line: {
@@ -92,7 +92,7 @@ var plotOne = {
 };
 var plotTwo = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearCIMin,
+    y: simulationTotalPopulationPerYearAverageStdMin,
     mode: 'lines',
     name: 'Minimum C.I. 99%',
     line: {
@@ -248,6 +248,34 @@ for (t = 0; t < math.max(naturalDeathPerYear.y)*1.3*params.numberYearsSimulated;
     probabilityNaturalDeathAxis[t] = t;
 }
 
+if (params.whalingRateYear > 0) {
+	whalingWhalesPerYear.y[0]=0;
+	var probabilityWhaling = [], probabilityWhalingAxis = [];
+	for (t = 0; t < math.max(whalingWhalesPerYear.y)*1.3*params.numberYearsSimulated; t++) {
+		probabilityWhaling[t]=cdfNormal(t, math.mean(whalingWhalesPerYear.y)*params.numberYearsSimulated, math.std(whalingWhalesPerYear.y)*params.numberYearsSimulated)*100;
+		probabilityWhalingAxis[t] = t;
+	}
+}
+
+if (params.whalingRateYear > 0) {
+	strandingWhalesPerYear.y[0]=0;
+	var probabilityStranding = [], probabilityStrandingAxis = [];
+	for (t = 0; t < math.max(strandingWhalesPerYear.y)*1.3*params.numberYearsSimulated; t++) {
+		probabilityStranding[t]=cdfNormal(t, math.mean(strandingWhalesPerYear.y)*params.numberYearsSimulated, math.std(strandingWhalesPerYear.y)*params.numberYearsSimulated)*100;
+		probabilityStrandingAxis[t] = t;
+	}
+}
+
+if (params.otherRateYear > 0) {
+	otherThreatPerYear.y[0]=0;
+	var probabilityOtherThreat = [], probabilityOtherThreatAxis = [];
+	for (t = 0; t < math.max(otherThreatPerYear.y)*1.3*params.numberYearsSimulated; t++) {
+		probabilityOtherThreat[t]=cdfNormal(t, math.mean(otherThreatPerYear.y)*params.numberYearsSimulated, math.std(otherThreatPerYear.y)*params.numberYearsSimulated)*100;
+		probabilityOtherThreatAxis[t] = t;
+	}
+}
+
+
 // Plot - Probability of at least
 var dataSet;
 var dataSetX;
@@ -259,6 +287,15 @@ function makeTrace(i) {
 	} else if (i == 1) {
 		dataSet = probabilityNaturalDeath
 		dataSetX = probabilityNaturalDeathAxis
+	} else if (i == 2) {
+		dataSet = probabilityWhaling
+		dataSetX = probabilityWhalingAxis
+	} else if (i == 3) {
+		dataSet = probabilityStranding
+		dataSetX = probabilityStrandingAxis
+	} else if (i == 4) {
+		dataSet = probabilityOtherThreat
+		dataSetX = probabilityOtherThreatAxis
 	};
     return {
 		x: dataSetX,
@@ -269,7 +306,7 @@ function makeTrace(i) {
         visible: i === 0,
     };
 }
-Plotly.plot('plot-probability', [0, 1].map(makeTrace), {
+Plotly.plot('plot-probability', [0, 1, 2, 3, 4].map(makeTrace), {
     updatemenus: [{
 		y: 1,
 		x: 0,
@@ -277,12 +314,24 @@ Plotly.plot('plot-probability', [0, 1].map(makeTrace), {
 		xanchor: 'left',
         buttons: [{
             method: 'restyle',
-            args: ['visible', [true, false, false, false]],
+            args: ['visible', [true, false, false, false, false]],
             label: 'Ship Strikes'
         }, {
             method: 'restyle',
-            args: ['visible', [false, true, false, false]],
+            args: ['visible', [false, true, false, false, false]],
             label: 'Natural deaths'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, true, false, false]],
+            label: 'Whaling deaths'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, true, false]],
+            label: 'Stranding deaths'
+        }, {
+            method: 'restyle',
+            args: ['visible', [false, false, false, false, true]],
+            label: 'Other threats'
         }]
 	}],
 	title: 'Probability of having at least this amount of deaths',
@@ -369,7 +418,7 @@ for (var j = 0; j < params.numberSimulations; j++) {
 		mode: "line",
 		x: xAxis,
 		y: simulationTotalPopulationPerYear[j],
-		opacity: 0.3,
+		opacity: 0.05,
 		line: {color: 'grey'},
 	})
 }

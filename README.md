@@ -4,9 +4,9 @@
 
 ## Key features
 
-- Implement analysis with standard data based on literature and input your own
+- Implement analysis with standard data based on literature or input your own
 - Adjust the anthropogenic threats to your study case
-- Simulation loops elimante the randomness of the answer
+- Loops eliminate the randomness of the answer
 
 ## Contributing
 
@@ -47,7 +47,7 @@ Now create and activate the virtual environment:
 http-server -c-1
 ```
 
-Or you can simply download the repository and run the **home.html** file. Make sure you have internet connection.
+Or you can simply download the repository and run the **home.html** file. Make sure you have an internet connection.
 
 ## Licensing
 

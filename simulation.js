@@ -213,7 +213,7 @@ function SimulationYear() {
 
 		// Agents that will be whaled
 		if (params.whalingRateYear > 0) {
-			var poisson = SJS.Poisson(whalingRateYear);
+			var poisson = SJS.Poisson(params.whalingRateYear);
 			numberWhalingWhales = Number(poisson.sample(1));
 			for (i = 0; i < numberWhalingWhales; i++) {
 				randomIndex = Math.ceil(myrng()*(Object.keys(populationProperties).length));
@@ -230,7 +230,7 @@ function SimulationYear() {
 
 		// Agents that will eventually strand
 		if (params.strandingRateYear > 0) {
-			var poisson = SJS.Poisson(strandingRateYear);
+			var poisson = SJS.Poisson(params.strandingRateYear);
 			numberStrandingWhales = Number(poisson.sample(1));
 			for (i = 0; i < numberStrandingWhales; i++) {
 				randomIndex = Math.ceil(myrng()*(Object.keys(populationProperties).length));
@@ -247,7 +247,7 @@ function SimulationYear() {
 
 		// Agents that will eventually die by other means
 		if (params.otherRateYear > 0) {
-			var poisson = SJS.Poisson(otherRateYear);
+			var poisson = SJS.Poisson(params.otherRateYear);
 			numberOtherThreatWhales = Number(poisson.sample(1));
 			for (i = 0; i < numberOtherThreatWhales; i++) {
 				randomIndex = Math.ceil(myrng()*(Object.keys(populationProperties).length));
