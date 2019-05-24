@@ -345,8 +345,21 @@ jQuery(window).load(function() {
                       <span class="popuptext" id="myPopup2">Interval of age maturation. The juvenile individuals become adults between these ages following a normal distribution.</span>
                     </div>
                   </div></p>
-                  <div>Probability of birth: 
-                    <input type="text" name="probBirth" id="probBirth" value="70" size="6" style="text-align:center"> %  
+                  <div>Age menopause:
+                    <input type="text" name="ageMenopause" id="ageMenopause" value="40" size="6" style="text-align:center"> years 
+                    <div class="popup" onclick="myFunction16()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup16">Approximate age in which females stop getting pregnant.</span>
+                    </div>
+                  </div></p>
+                  <div>Pregnancy cycle: between
+                    <input type="text" name="pregnancyCycleMin" id="pregnancyCycleMin" value="2" size="6" style="text-align:center"> and 
+                    <input type="text" name="pregnancyCycleMax" id="pregnancyCycleMax" value="3" size="6" style="text-align:center"> years
+                    <div class="popup" onclick="myFunction17()"><i class="fa fa-1x fa-binoculars style=regular"></i>
+                      <span class="popuptext" id="myPopup17">Time between two calves birth, including gestation, lactation and rest.</span>
+                    </div>
+                  </div></p>
+                  <div>Probability of pregnancy: 
+                    <input type="text" name="probBirth" id="probBirth" value="80" size="6" style="text-align:center"> %  
                     <div class="popup" onclick="myFunction6()"><i class="fa fa-1x fa-binoculars style=regular"></i>
                       <span class="popuptext" id="myPopup6">The probability of a female having an offspring in the following year by a binomial distribution. It is applied only to females that are not pregnant, resting after pregnancy, or sterile. </span>
                     </div>

@@ -11,7 +11,6 @@ var initialPopulationJuveniles,
     initialPopulationMales, 
 	currentYear, 
 	currentPopulation,
-    ageFemaleSterile,
     strikeType, 
     strikeClass, 
 	yearStartSimulation,
@@ -55,7 +54,6 @@ function inputData() {
 	
 	// Other inputs
 	yearStartSimulation = 2019;
-    ageFemaleSterile = Math.round((params.ageLifeExpectancy - params.ageMaturationMax) * 0.6 + params.ageMaturationMax);
     currentPopulation = params.initialPopulation;
     currentYear = yearStartSimulation;
 }
@@ -122,8 +120,9 @@ function SimulationYear() {
 			populationProperties[i].age = Math.floor(myrng()*(params.ageLifeExpectancy-params.ageMaturationMax)+params.ageMaturationMax);
 			populationProperties[i].yearBirth = yearStartSimulation-populationProperties[i].age;
 			populationProperties[i].yearSexualMaturation = 'unknown';
-			if (populationProperties[i].age < ageFemaleSterile) {
-				var pregnantOrNot = SJS.Binomial(1, params.probBirth/100);
+			if (populationProperties[i].age < params.ageMenopause) {
+				var auxBirthProb = ((params.pregnancyCycleMin*1 + params.pregnancyCycleMax*1) * 0.5);
+				var pregnantOrNot = SJS.Binomial(1, params.probBirth/100 / auxBirthProb);
 				if (pregnantOrNot.sample(1) == true) {
 					populationProperties[i].pregnancyStatus = 'pregnant';
 				} else {
@@ -293,11 +292,12 @@ function SimulationYear() {
 					}
 					populationProperties[i].pregnancyStatus = 'nonpregnant';
 				} else if (populationProperties[i].pregnancyStatus == 'nonpregnant') {
-					var pregnantOrNot = SJS.Binomial(1, params.probBirth/100);
+					var auxBirthProb = ((params.pregnancyCycleMin*1 + params.pregnancyCycleMax*1) * 0.5);
+					var pregnantOrNot = SJS.Binomial(1, params.probBirth/100 / auxBirthProb);
 					if (pregnantOrNot.sample(1) == true) {
 						populationProperties[i].pregnancyStatus = 'pregnant';
 					}
-				} else if (populationProperties[i].age > ageFemaleSterile) {
+				} else if (populationProperties[i].age > params.ageMenopause) {
 					populationProperties[i].pregnancyStatus = 'sterile';
 				}
 			}

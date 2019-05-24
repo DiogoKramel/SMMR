@@ -207,12 +207,25 @@ function myFunction15() {
   popup.classList.toggle("show");
 };
 
+function myFunction16() {
+  var popup = document.getElementById("myPopup16");
+  popup.classList.toggle("show");
+};
+
+function myFunction17() {
+  var popup = document.getElementById("myPopup17");
+  popup.classList.toggle("show");
+};
+
 var speciesSelected = [];
 function dataSpermWhale() {
   document.getElementById("ageLifeExpectancy").value = "70"
   document.getElementById("ageMaturationMin").value = "9"
   document.getElementById("ageMaturationMax").value = "10"
-  document.getElementById("probBirth").value = "25"
+  document.getElementById("ageMenopause").value = "50"
+  document.getElementById("pregnancyCycleMin").value = "3"
+  document.getElementById("pregnancyCycleMax").value = "5"
+  document.getElementById("probBirth").value = "90"
   localStorage.setItem("speciesSelected", "Sperm Whale")
 };
 
@@ -220,7 +233,10 @@ function dataBlueWhale() {
   document.getElementById("ageLifeExpectancy").value = "85"
   document.getElementById("ageMaturationMin").value = "5"
   document.getElementById("ageMaturationMax").value = "10"
-  document.getElementById("probBirth").value = "40"
+  document.getElementById("ageMenopause").value = "60"
+  document.getElementById("pregnancyCycleMin").value = "2"
+  document.getElementById("pregnancyCycleMax").value = "3"
+  document.getElementById("probBirth").value = "80"
   localStorage.setItem("speciesSelected", "Blue Whale")
 };
 
@@ -228,7 +244,10 @@ function dataFinWhale() {
   document.getElementById("ageLifeExpectancy").value = "90"
   document.getElementById("ageMaturationMin").value = "7"
   document.getElementById("ageMaturationMax").value = "12"
-  document.getElementById("probBirth").value = "40"
+  document.getElementById("ageMenopause").value = "65"
+  document.getElementById("pregnancyCycleMin").value = "2"
+  document.getElementById("pregnancyCycleMax").value = "3"
+  document.getElementById("probBirth").value = "80"
   localStorage.setItem("speciesSelected", "Fin Whale")
 };
 
@@ -236,7 +255,10 @@ function dataRightWhale() {
   document.getElementById("ageLifeExpectancy").value = "60"
   document.getElementById("ageMaturationMin").value = "5"
   document.getElementById("ageMaturationMax").value = "21"
-  document.getElementById("probBirth").value = "40"
+  document.getElementById("ageMenopause").value = "40"
+  document.getElementById("pregnancyCycleMin").value = "2"
+  document.getElementById("pregnancyCycleMax").value = "3"
+  document.getElementById("probBirth").value = "80"
   localStorage.setItem("speciesSelected", "Right Whale")
 };
 
@@ -244,7 +266,10 @@ function dataHumpbackWhale() {
   document.getElementById("ageLifeExpectancy").value = "50"
   document.getElementById("ageMaturationMin").value = "5"
   document.getElementById("ageMaturationMax").value = "7"
-  document.getElementById("probBirth").value = "33"
+  document.getElementById("ageMenopause").value = "35"
+  document.getElementById("pregnancyCycleMin").value = "2"
+  document.getElementById("pregnancyCycleMax").value = "4"
+  document.getElementById("probBirth").value = "80"
   localStorage.setItem("speciesSelected", "Humpback Whale")
 };
 
@@ -252,7 +277,10 @@ function dataGrayWhale() {
   document.getElementById("ageLifeExpectancy").value = "60"
   document.getElementById("ageMaturationMin").value = "5"
   document.getElementById("ageMaturationMax").value = "11"
-  document.getElementById("probBirth").value = "40"
+  document.getElementById("ageMenopause").value = "0"
+  document.getElementById("pregnancyCycleMin").value = "2"
+  document.getElementById("pregnancyCycleMax").value = "3"
+  document.getElementById("probBirth").value = "80"
   localStorage.setItem("speciesSelected", "Gray Whale")
 };
 
