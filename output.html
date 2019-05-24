@@ -73,7 +73,7 @@
 
   <script>
   /* PRINT WHALE PICTURE */
-  function checkStorage(){
+  function checkStorage() {
       if (localStorage.getItem("speciesSelected") == "Sperm Whale") {
           document.getElementById("WhaleFig").src = "assets/images/whales/sperm-whale.png";
       } else  if (localStorage.getItem("speciesSelected") == "Blue Whale") {
@@ -90,8 +90,8 @@
         document.getElementById("WhaleFig").src = "assets/images/whales/undentifiedwhale.png";
         localStorage.setItem("speciesSelected", "Alternative Species")
       }
-    };
-    </script>
+	};
+</script>
   
 </head>
 
