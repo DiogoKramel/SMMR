@@ -70,10 +70,10 @@ var layout = {
       family: 'Arial',
     },
     margin: {
-        l: 0,
-        b: 0,
-        t: 50,
-        pad: 4
+        l: 30,
+        b: 30,
+        t: 10,
+        r: 30,
     },
 };
 Plotly.plot('input-data', data, layout);
@@ -82,9 +82,9 @@ Plotly.plot('input-data', data, layout);
 // Plot - Population increase
 var plotOne = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearAverageStdMax,
+    y: simulationTotalPopulationPerYearCIMax,
     mode: 'lines',
-    name: 'Maximum C.I. 99%',
+    name: 'Confidence Interval 99.9%',
     line: {
       dash: 'dot',
       width: 1,
@@ -93,9 +93,9 @@ var plotOne = {
 };
 var plotTwo = {
     x: xAxis,
-    y: simulationTotalPopulationPerYearAverageStdMin,
+    y: simulationTotalPopulationPerYearCIMin,
     mode: 'lines',
-    name: 'Minimum C.I. 99%',
+    name: 'Confidence Interval 99.9%',
     line: {
       dash: 'dot',
       width: 1,
@@ -140,7 +140,8 @@ var layout = {
         title: 'Number of individuals',
         showline: true,
         linewidth: 1,
-        mirror: true
+        mirror: true,
+        rangemode: 'tozero',
 	},
 	margin: {
 		r: 265,
@@ -172,6 +173,10 @@ var layout = {
         linewidth: 1,
         mirror: true
     },
+    margin: {
+        l: 50,
+        r: 30
+    }
 };
 Plotly.newPlot('plot-aging', data, layout);
 
@@ -349,7 +354,11 @@ Plotly.plot('plot-probability', [0, 1, 2, 3, 4].map(makeTrace), {
 		zeroline: false,
 		linewidth: 1,
 		mirror: true
-	},
+    },
+    margin: {
+        l: 60,
+        r: 10
+    }
 });
 
 
@@ -368,7 +377,7 @@ var probabilityStrikes = {
 };
 var data = [probabilityStrikes];
 var layout = {
-    title: 'Normal distribution of ship collisions',
+    title: 'Distribution of ship collisions',
     yaxis: {
         title: 'Probability [%]',
         showgrid: true,
@@ -381,6 +390,10 @@ var layout = {
         linewidth: 1,
         mirror: true
     },
+    margin: {
+        l: 50,
+        r: 30
+    }
 };
 Plotly.newPlot('plot-probability-normal', data, layout);
 
@@ -407,6 +420,10 @@ var layout = {
         linewidth: 1,
         mirror: true
     },
+    margin: {
+        l: 60,
+        r: 10
+    }
 };
 Plotly.newPlot('plotAgeLastYear', data, layout);
 
@@ -484,7 +501,11 @@ var layout = {
 		mirror: true,
 		rangemode: 'tozero',
     	autorange: true
-	},
+    },
+    margin: {
+        l: 50,
+        r: 30
+    }
 }
 Plotly.plot('plot-allSimulations', data, layout)
 
@@ -523,3 +544,39 @@ var layout = {
     },
 };
 Plotly.plot('input-growth', data, layout);
+
+
+// Plot - Probability growth distribution
+var growthRateSimulation = [];
+for (t = 0; t < params.numberSimulations; t++) {
+    growthRateSimulation[t] = ((simulationTotalPopulationPerYear[t])[params.numberYearsSimulated] - (simulationTotalPopulationPerYear[t])[0]) / (simulationTotalPopulationPerYear[t])[0]  * 100
+};
+
+// Plot - Histogram Age
+var trace = {
+    x: growthRateSimulation,
+    type: 'histogram',
+  };
+var data = [trace];
+var layout = {
+    title: 'Age profile',
+        xaxis: {
+        title: 'Growth rate [%]',
+        showgrid: true,
+        zeroline: false,
+        linewidth: 1,
+        mirror: true,
+    },
+    yaxis: {
+        title: 'Ocurrence',
+        showgrid: true,
+        zeroline: false,
+        linewidth: 1,
+        mirror: true,
+    },
+    margin: {
+        l: 60,
+        r: 10
+    }
+};
+Plotly.newPlot('plot-probabilityGrowth', data, layout);

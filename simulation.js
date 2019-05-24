@@ -271,6 +271,7 @@ function SimulationYear() {
 					if (matureOrNot.sample(1) == true) {
 						populationProperties[i].class = 'adult';
 						populationProperties[i].ageSexualMaturation = populationProperties[i].age;
+						populationProperties[i].yearSexualMaturation = year+2019;
 					}
 				}
 			}
@@ -443,7 +444,7 @@ for (var i = 0; i <= params.numberYearsSimulated; i++) {
         totalPopulationPerSimulation[i][j] = simulationTotalPopulationPerYear[j][i]
     };
     totalPopulationPerSimulationStd[i] = math.std(totalPopulationPerSimulation[i])
-	simulationTotalPopulationPerYearCI[i] = mctad.confidenceIntervalOnTheMean(simulationTotalPopulationPerYearAverage[i], totalPopulationPerSimulationStd[i]*2, params.numberSimulations, 0.01);
+	simulationTotalPopulationPerYearCI[i] = mctad.confidenceIntervalOnTheMean(simulationTotalPopulationPerYearAverage[i], totalPopulationPerSimulationStd[i]*2, params.numberSimulations, 0.001);
 	simulationTotalPopulationPerYearAverageStdMax[i] = simulationTotalPopulationPerYearAverage[i] + totalPopulationPerSimulationStd[i];
 	simulationTotalPopulationPerYearAverageStdMin[i] = simulationTotalPopulationPerYearAverage[i] - totalPopulationPerSimulationStd[i];
 	simulationTotalPopulationPerYearCIMin[i] = (simulationTotalPopulationPerYearCI[i])[0];
