@@ -1,3 +1,6 @@
+// Generate the same random numbers
+var myrng = new Math.seedrandom(1234);
+
 // Assign globals
 var params = {};
 var populationProperties = {};
@@ -77,9 +80,6 @@ function makeDead(index) {
 
 // Simulation of one single year
 function SimulationYear() {
-	
-	// Generate the same random numbers
-	var myrng = new Math.seedrandom(1234);
 
 	// Read the data contained in the url
 	inputData();
@@ -110,8 +110,8 @@ function SimulationYear() {
 		if (i <= initialPopulationJuveniles) {
 			populationProperties[i].age = Math.floor(myrng()*params.ageMaturationMax);
 			populationProperties[i].yearBirth = yearStartSimulation-populationProperties[i].age;
-			var femaleOrMale = SJS.Binomial(1, params.percentFemales/100);
-			if (femaleOrMale.sample(1) == true) {
+			var femaleOrMale = SJS.Binomial(1, params.percentualFemales/100);
+			if (femaleOrMale.sample(1) == false) {
 				populationProperties[i].gender = 'female';
 			} else {
 				populationProperties[i].gender = 'male';
@@ -443,7 +443,7 @@ for (var i = 0; i <= params.numberYearsSimulated; i++) {
         totalPopulationPerSimulation[i][j] = simulationTotalPopulationPerYear[j][i]
     };
     totalPopulationPerSimulationStd[i] = math.std(totalPopulationPerSimulation[i])
-	simulationTotalPopulationPerYearCI[i] = mctad.confidenceIntervalOnTheMean(simulationTotalPopulationPerYearAverage[i], totalPopulationPerSimulationStd[i]*2, params.numberSimulations, 0.05);
+	simulationTotalPopulationPerYearCI[i] = mctad.confidenceIntervalOnTheMean(simulationTotalPopulationPerYearAverage[i], totalPopulationPerSimulationStd[i]*2, params.numberSimulations, 0.01);
 	simulationTotalPopulationPerYearAverageStdMax[i] = simulationTotalPopulationPerYearAverage[i] + totalPopulationPerSimulationStd[i];
 	simulationTotalPopulationPerYearAverageStdMin[i] = simulationTotalPopulationPerYearAverage[i] - totalPopulationPerSimulationStd[i];
 	simulationTotalPopulationPerYearCIMin[i] = (simulationTotalPopulationPerYearCI[i])[0];
