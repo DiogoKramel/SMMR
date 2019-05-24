@@ -226,6 +226,7 @@ function dataSpermWhale() {
   document.getElementById("pregnancyCycleMin").value = "3"
   document.getElementById("pregnancyCycleMax").value = "5"
   document.getElementById("probBirth").value = "90"
+  document.getElementById("percentualJuveniles").value = "35"
   localStorage.setItem("speciesSelected", "Sperm Whale")
 };
 
@@ -237,6 +238,7 @@ function dataBlueWhale() {
   document.getElementById("pregnancyCycleMin").value = "2"
   document.getElementById("pregnancyCycleMax").value = "3"
   document.getElementById("probBirth").value = "80"
+  document.getElementById("percentualJuveniles").value = "30"
   localStorage.setItem("speciesSelected", "Blue Whale")
 };
 
@@ -248,6 +250,7 @@ function dataFinWhale() {
   document.getElementById("pregnancyCycleMin").value = "2"
   document.getElementById("pregnancyCycleMax").value = "3"
   document.getElementById("probBirth").value = "80"
+  document.getElementById("percentualJuveniles").value = "35"
   localStorage.setItem("speciesSelected", "Fin Whale")
 };
 
@@ -259,6 +262,7 @@ function dataRightWhale() {
   document.getElementById("pregnancyCycleMin").value = "2"
   document.getElementById("pregnancyCycleMax").value = "3"
   document.getElementById("probBirth").value = "80"
+  document.getElementById("percentualJuveniles").value = "50"
   localStorage.setItem("speciesSelected", "Right Whale")
 };
 
@@ -270,6 +274,7 @@ function dataHumpbackWhale() {
   document.getElementById("pregnancyCycleMin").value = "2"
   document.getElementById("pregnancyCycleMax").value = "4"
   document.getElementById("probBirth").value = "80"
+  document.getElementById("percentualJuveniles").value = "25"
   localStorage.setItem("speciesSelected", "Humpback Whale")
 };
 
@@ -277,10 +282,11 @@ function dataGrayWhale() {
   document.getElementById("ageLifeExpectancy").value = "60"
   document.getElementById("ageMaturationMin").value = "5"
   document.getElementById("ageMaturationMax").value = "11"
-  document.getElementById("ageMenopause").value = "0"
+  document.getElementById("ageMenopause").value = "40"
   document.getElementById("pregnancyCycleMin").value = "2"
   document.getElementById("pregnancyCycleMax").value = "3"
   document.getElementById("probBirth").value = "80"
+  document.getElementById("percentualJuveniles").value = "30"
   localStorage.setItem("speciesSelected", "Gray Whale")
 };
 
