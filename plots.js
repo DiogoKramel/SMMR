@@ -552,14 +552,14 @@ for (t = 0; t < params.numberSimulations; t++) {
     growthRateSimulation[t] = ((simulationTotalPopulationPerYear[t])[params.numberYearsSimulated] - (simulationTotalPopulationPerYear[t])[0]) / (simulationTotalPopulationPerYear[t])[0]  * 100
 };
 
-// Plot - Histogram Age
+// Plot - Growth distribution
 var trace = {
     x: growthRateSimulation,
     type: 'histogram',
   };
 var data = [trace];
 var layout = {
-    title: 'Age profile',
+    title: 'Growth rate distribution',
         xaxis: {
         title: 'Growth rate [%]',
         showgrid: true,
