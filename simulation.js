@@ -49,9 +49,8 @@ function inputData() {
 	
 	// Linear increase of number of ship
     for (i = 0; i <= params.numberYearsSimulated; i++) {
-        numberShips[i] = Math.round(i * (params.numberShipsFinal - params.numberShipsInitial) / params.numberYearsSimulated + params.numberShipsInitial)
+        numberShips[i] = Math.round(i * (params.numberShipsExpectedFinal*1 - params.numberShipsInitial*1) / params.numberYearsSimulated*1 + params.numberShipsInitial*1)
 	};
-	
 	// Other inputs
 	yearStartSimulation = 2019;
     currentPopulation = params.initialPopulation;
@@ -193,8 +192,9 @@ function SimulationYear() {
 			var poisson = SJS.Poisson(params.strikeRateYear);
 			numberShipStrikes = Number(poisson.sample(1));
 		} else {
-			var poisson = SJS.Poisson(params.strikeRateYear*numberShips[currentYear-yearStartSimulation-1]);
+			var poisson = SJS.Poisson(numberShips[currentYear-yearStartSimulation-1]/params.strikeRateYear);
 			numberShipStrikes = Number(poisson.sample(1));
+			console.log(numberShipStrikes)
 		};
 
 		// Agents that will be stroke by ships
