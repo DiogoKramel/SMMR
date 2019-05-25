@@ -193,7 +193,7 @@ function SimulationYear() {
 			var poisson = SJS.Poisson(params.strikeRateYear);
 			numberShipStrikes = Number(poisson.sample(1));
 		} else {
-			var poisson = SJS.Poisson(strikeRateShip*numberShips[currentYear-yearStartSimulation-1]);
+			var poisson = SJS.Poisson(params.strikeRateYear*numberShips[currentYear-yearStartSimulation-1]);
 			numberShipStrikes = Number(poisson.sample(1));
 		};
 
