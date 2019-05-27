@@ -512,7 +512,7 @@ Plotly.plot('plot-allSimulations', data, layout)
 
 // Table - Input data
 var growthRate = (simulationTotalPopulationPerYearAverage[params.numberYearsSimulated] - simulationTotalPopulationPerYearAverage[0]) / simulationTotalPopulationPerYearAverage[0]  * 100
-var growthRateMonth = growthRate / params.numberYearsSimulated
+var growthRateMonth = Math.pow ( growthRate,  (1 / params.numberYearsSimulated))
 var growthRateRound = growthRate.toFixed(4);
 var growthRateMonthRound = growthRateMonth.toFixed(4);
 

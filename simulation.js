@@ -194,7 +194,6 @@ function SimulationYear() {
 		} else {
 			var poisson = SJS.Poisson(numberShips[currentYear-yearStartSimulation-1]/params.strikeRateYear);
 			numberShipStrikes = Number(poisson.sample(1));
-			console.log(numberShipStrikes)
 		};
 
 		// Agents that will be stroke by ships
