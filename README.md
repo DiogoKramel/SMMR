@@ -27,27 +27,39 @@ Contains the routine that performs the core simulation implemented in the analys
 The data provided by the simulatino is converted to graphs using the Plotly framework.
 
 
+## Publish it on GitHub Pages (free)
+
+SMMR is a static website (HTML, CSS and JavaScript only), so GitHub Pages can host it.
+
+1. Upload the contents of this folder to the GitHub repository (or push it with git).
+2. In the repository go to **Settings → Pages**, choose **Deploy from a branch**,
+   branch `main` (or `master`), folder `/ (root)`, and save.
+3. After a minute or two the site is live at `https://<your-user>.github.io/SMMR/`.
+
+To use your own domain, enter it under **Settings → Pages → Custom domain** and add a
+CNAME record at your domain registrar pointing to `<your-user>.github.io`.
+
 ## How to run the app locally
 
-You can clone or download this repo:
+Serve the folder with any static web server, for example:
 
 ```
-git clone https://github.com/DiogoKramel/SMMR
+cd SMMR
+python -m http.server 8000
 ```
 
-Then change directory into the repo:
+and open http://localhost:8000. Opening `index.html` directly from disk also works in most browsers.
 
-```
-cd SMMR-master/
-```
+## Notes
 
-Now create and activate the virtual environment:
-
-```
-http-server -c-1
-```
-
-Or you can simply download the repository and run the **home.html** file. Make sure you have an internet connection.
+* `index.html` is the home page (it used to be `home.html`, loaded by a small PHP file for Heroku).
+* All libraries and fonts are included in `assets/` (`assets/vendor/` for Plotly, math.js,
+  jQuery 3, Bootstrap 4 JS, Popper, Font Awesome and the Raleway/Abel fonts), so the site does
+  not depend on outside CDNs.
+* The contact form opens the visitor's e-mail program with the message ready to send, since
+  a static site cannot send e-mail by itself. To receive messages directly instead, a form
+  service such as Formspree can be used: set the form's `action` to the service's address and
+  remove the contact handler in `assets/js/main.js`.
 
 ## Licensing
 

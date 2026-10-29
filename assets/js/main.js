@@ -46,9 +46,16 @@ $(document).ready(function($) {
 
         $('.section-scroll').bind('click', function(e) {
             var anchor = $(this);
+            var href = anchor.attr('href');
+
+            // only animate links to a section of this page; links to other
+            // pages (e.g. "index.html#contact-section") are followed normally
+            if (href.charAt(0) !== '#' || !$(href).length) {
+                return;
+            }
 
             $('html, body').stop().animate({
-                scrollTop: $(anchor.attr('href')).offset().top -62
+                scrollTop: $(href).offset().top -62
             }, 1000);
 
             e.preventDefault();
@@ -357,36 +364,26 @@ $(document).ready(function($) {
         Contact Form
     =============================================== */
 
+    // The site is static (GitHub Pages), so the form opens the visitor's e-mail
+    // program with the message ready to send instead of posting to a server.
     $('#contactform').submit(function(){
 
-        var action = $(this).attr('action');
+        var name = $.trim($('#name').val());
+        var email = $.trim($('#email').val());
+        var subject = $.trim($('#subject').val()) || 'SMMR';
+        var message = $.trim($('#message').val());
 
-        $("#alert").slideUp(750,function() {
-            $('#alert').hide();
+        if (!message) {
+            $('#alert').html('Please write a message.').slideDown('slow');
+            return false;
+        }
 
-        $('#submit')
-            .after('<img src="assets/images/loading.gif" class="contactloader" />')
-            .attr('disabled','disabled');
+        var body = message + '\n\n' + name + (email ? ' <' + email + '>' : '');
+        window.location.href = 'mailto:diogo.kramel@gmail.com?subject=' + encodeURIComponent(subject) +
+            '&body=' + encodeURIComponent(body);
 
-        $.post(action, {
-            name: $('#name').val(),
-            email: $('#email').val(),
-            message: $('#message').val()
-        },
-            function(data){
-                document.getElementById('alert').innerHTML = data;
-                $('#alert').slideDown('slow');
-                $('#contactform img.contactloader').fadeOut('slow',function(){$(this).remove();});
-                $('#submit').removeAttr('disabled');
-                if(data.match('success') !== null) {
-                    $('#name').val('');
-                    $('#email').val('');
-                    $('#message').val('');
-                }
-            }
-        );
-
-        });
+        $('#alert').html('Your e-mail program should open with the message ready to send. ' +
+            'If nothing happens, please write to <a href="mailto:diogo.kramel@gmail.com">diogo.kramel@gmail.com</a>.').slideDown('slow');
 
         return false;
 
